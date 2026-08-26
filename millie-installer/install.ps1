@@ -1,5 +1,5 @@
 param(
-    [string]$Repository = "YOUR_GITHUB_USERNAME/YOUR_REPOSITORY",
+    [string]$Repository = "cassielxyz/millieskill",
     [string]$Branch = "main",
     [string]$Skill,
     [string]$Platform,
