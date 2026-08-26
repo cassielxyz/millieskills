@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 210" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="210">
+      <stop stop-color="#0B1020"/>
+      <stop offset=".42" stop-color="#151B36"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="g" x1="100" y1="50" x2="1100" y2="160">
+      <stop stop-color="#8B5CF6"/>
+      <stop offset=".33" stop-color="#06B6D4"/>
+      <stop offset=".66" stop-color="#22C55E"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="210" rx="28" fill="url(#bg)"/>
+  <circle cx="104" cy="105" r="50" fill="#8B5CF6" fill-opacity=".14"/>
+  <circle cx="1095" cy="105" r="56" fill="#EC4899" fill-opacity=".12"/>
+  <path d="M120 105H1080" stroke="url(#g)" stroke-width="3" stroke-dasharray="8 12"/>
+  <circle cx="230" cy="105" r="15" fill="#8B5CF6"/>
+  <circle cx="430" cy="105" r="15" fill="#06B6D4"/>
+  <circle cx="630" cy="105" r="15" fill="#22C55E"/>
+  <circle cx="830" cy="105" r="15" fill="#F59E0B"/>
+  <circle cx="1030" cy="105" r="15" fill="#EC4899"/>
+  <text x="230" y="68" text-anchor="middle" fill="#DDD6FE" font-family="ui-sans-serif,system-ui" font-size="20" font-weight="700">CLONE</text>
+  <text x="430" y="68" text-anchor="middle" fill="#CFFAFE" font-family="ui-sans-serif,system-ui" font-size="20" font-weight="700">MAP</text>
+  <text x="630" y="68" text-anchor="middle" fill="#DCFCE7" font-family="ui-sans-serif,system-ui" font-size="20" font-weight="700">REPAIR</text>
+  <text x="830" y="68" text-anchor="middle" fill="#FEF3C7" font-family="ui-sans-serif,system-ui" font-size="20" font-weight="700">VERIFY</text>
+  <text x="1030" y="68" text-anchor="middle" fill="#FCE7F3" font-family="ui-sans-serif,system-ui" font-size="20" font-weight="700">DOCUMENT</text>
+  <text x="600" y="165" text-anchor="middle" fill="#94A3B8" font-family="ui-sans-serif,system-ui" font-size="18" font-weight="600">Repository intelligence before repository surgery.</text>
+</svg>
