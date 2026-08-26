@@ -1,6 +1,7 @@
 param(
     [string]$Repository = "cassielxyz/millieskills",
     [string]$Branch = "main",
+    [string]$ManifestPath = "millie-installer/skills.json",
     [string]$Skill,
     [string]$Platform,
     [switch]$AllSkills,
@@ -12,50 +13,127 @@ param(
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version 2.0
 
-$Script:InstallerVersion = "0.1.0"
-$Script:RegistryPath = Join-Path $HOME ".millie/installed.json"
+$Script:InstallerVersion = "0.2.0"
+$Script:RegistryPath = Join-Path $HOME ".millie\installed.json"
 
-# ------------------------------------------------------------
-# Console / visual helpers
-# ------------------------------------------------------------
-
-function Write-Center {
-    param(
-        [string]$Text,
-        [ConsoleColor]$Color = [ConsoleColor]::White
-    )
-
+function Get-TerminalWidth {
     $width = 80
     try {
         if ($Host.UI.RawUI.WindowSize.Width -gt 20) {
             $width = $Host.UI.RawUI.WindowSize.Width
         }
     } catch {}
+    return $width
+}
 
-    $pad = [Math]::Max(0, [Math]::Floor(($width - $Text.Length) / 2))
-    Write-Host ((" " * $pad) + $Text) -ForegroundColor $Color
+function Get-CenteredText {
+    param([string]$Text)
+    $width = Get-TerminalWidth
+    $padding = [Math]::Max(0, [Math]::Floor(($width - $Text.Length) / 2))
+    return ((" " * $padding) + $Text)
+}
+
+function Write-Center {
+    param(
+        [string]$Text,
+        [ConsoleColor]$Color = [ConsoleColor]::White
+    )
+    Write-Host (Get-CenteredText $Text) -ForegroundColor $Color
+}
+
+function Test-AnsiColor {
+    if (-not [string]::IsNullOrWhiteSpace($env:WT_SESSION)) { return $true }
+    try {
+        $prop = $Host.UI.PSObject.Properties["SupportsVirtualTerminal"]
+        if ($null -ne $prop -and $Host.UI.SupportsVirtualTerminal) { return $true }
+    } catch {}
+    if ($env:TERM_PROGRAM -or $env:ConEmuANSI -eq "ON" -or $env:ANSICON) { return $true }
+    return $false
+}
+
+function Get-GradientRgb {
+    param([double]$Position)
+
+    # Three-stop warm gradient:
+    # RED #FF3B30 -> ORANGE #FF9500 -> YELLOW #FFD60A
+    $red    = @(255, 59, 48)
+    $orange = @(255, 149, 0)
+    $yellow = @(255, 214, 10)
+
+    if ($Position -le 0.5) {
+        $local = $Position / 0.5
+        $a = $red
+        $b = $orange
+    } else {
+        $local = ($Position - 0.5) / 0.5
+        $a = $orange
+        $b = $yellow
+    }
+
+    return @(
+        [int][Math]::Round($a[0] + (($b[0] - $a[0]) * $local)),
+        [int][Math]::Round($a[1] + (($b[1] - $a[1]) * $local)),
+        [int][Math]::Round($a[2] + (($b[2] - $a[2]) * $local))
+    )
+}
+
+function Write-GradientText {
+    param([string]$Text)
+
+    $centered = Get-CenteredText $Text
+
+    if (-not (Test-AnsiColor)) {
+        $leading = $centered.Length - $centered.TrimStart().Length
+        if ($leading -gt 0) { Write-Host (" " * $leading) -NoNewline }
+
+        $visible = $centered.TrimStart()
+        $n = $visible.Length
+        $a = [Math]::Max(1, [Math]::Floor($n / 3))
+        $b = [Math]::Min($n, $a * 2)
+
+        Write-Host $visible.Substring(0, $a) -ForegroundColor Red -NoNewline
+        Write-Host $visible.Substring($a, $b - $a) -ForegroundColor DarkYellow -NoNewline
+        Write-Host $visible.Substring($b) -ForegroundColor Yellow
+        return
+    }
+
+    $esc = [char]27
+    $reset = "$esc[0m"
+    $leadingSpaces = $centered.Length - $centered.TrimStart().Length
+
+    if ($leadingSpaces -gt 0) {
+        Write-Host (" " * $leadingSpaces) -NoNewline
+    }
+
+    $visible = $centered.TrimStart()
+    $count = $visible.Length
+
+    for ($i = 0; $i -lt $count; $i++) {
+        $position = if ($count -le 1) { 1.0 } else { $i / ($count - 1.0) }
+        $rgb = Get-GradientRgb -Position $position
+        Write-Host "$esc[38;2;$($rgb[0]);$($rgb[1]);$($rgb[2])m$($visible[$i])" -NoNewline
+    }
+
+    Write-Host $reset
 }
 
 function Show-MillieBanner {
     if ($NoBanner) { return }
-
-    Clear-Host
+    try { Clear-Host } catch {}
 
     $banner = @(
-        @{ Text = "███╗   ███╗██╗██╗     ██╗     ██╗███████╗"; Color = "Magenta" },
-        @{ Text = "████╗ ████║██║██║     ██║     ██║██╔════╝"; Color = "DarkMagenta" },
-        @{ Text = "██╔████╔██║██║██║     ██║     ██║█████╗  "; Color = "Blue" },
-        @{ Text = "██║╚██╔╝██║██║██║     ██║     ██║██╔══╝  "; Color = "Cyan" },
-        @{ Text = "██║ ╚═╝ ██║██║███████╗███████╗██║███████╗"; Color = "Green" },
-        @{ Text = "╚═╝     ╚═╝╚═╝╚══════╝╚══════╝╚═╝╚══════╝"; Color = "Yellow" }
+        "███╗   ███╗██╗██╗     ██╗     ██╗███████╗",
+        "████╗ ████║██║██║     ██║     ██║██╔════╝",
+        "██╔████╔██║██║██║     ██║     ██║█████╗  ",
+        "██║╚██╔╝██║██║██║     ██║     ██║██╔══╝  ",
+        "██║ ╚═╝ ██║██║███████╗███████╗██║███████╗",
+        "╚═╝     ╚═╝╚═╝╚══════╝╚══════╝╚═╝╚══════╝"
     )
 
-    foreach ($line in $banner) {
-        Write-Center -Text $line.Text -Color ([ConsoleColor]$line.Color)
-    }
-
     Write-Host ""
-    Write-Center "UNIVERSAL AGENT SKILLS INSTALLER" Cyan
+    foreach ($line in $banner) { Write-GradientText $line }
+    Write-Host ""
+    Write-Center "UNIVERSAL AGENT SKILLS INSTALLER" Yellow
     Write-Center "Build smarter agents. Keep the skill everywhere." DarkGray
     Write-Center "Installer v$($Script:InstallerVersion)" DarkGray
     Write-Host ""
@@ -65,7 +143,7 @@ function Write-Section {
     param([string]$Title)
     Write-Host ""
     Write-Host ("  " + ("─" * 70)) -ForegroundColor DarkGray
-    Write-Host ("  " + $Title) -ForegroundColor Cyan
+    Write-Host ("  " + $Title) -ForegroundColor DarkYellow
     Write-Host ("  " + ("─" * 70)) -ForegroundColor DarkGray
 }
 
@@ -87,167 +165,112 @@ function Write-ErrorLine {
     Write-Host $Text -ForegroundColor White
 }
 
-function Pause-Millie {
-    Write-Host ""
-    [void](Read-Host "  Press Enter to continue")
-}
-
-# ------------------------------------------------------------
-# Repository / manifest
-# ------------------------------------------------------------
-
-function Assert-RepositoryConfigured {
-    if ($Repository -match "YOUR_GITHUB_USERNAME|YOUR_REPOSITORY") {
-        Write-ErrorLine "The installer repository is not configured yet."
-        Write-Host ""
-        Write-Host "  Edit install.ps1 and replace:" -ForegroundColor White
-        Write-Host '    YOUR_GITHUB_USERNAME/YOUR_REPOSITORY' -ForegroundColor Yellow
-        Write-Host ""
-        Write-Host "  Example:" -ForegroundColor White
-        Write-Host '    jesowin/millie' -ForegroundColor Cyan
-        throw "Millie repository has not been configured."
-    }
-}
-
 function Get-RawBaseUrl {
     return "https://raw.githubusercontent.com/$Repository/$Branch"
 }
 
 function Get-MillieManifest {
-    Assert-RepositoryConfigured
+    $url = "$(Get-RawBaseUrl)/$ManifestPath"
 
-    $url = "$(Get-RawBaseUrl)/skills.json"
-
-    Write-Host "  Fetching skill catalog..." -ForegroundColor DarkGray
+    Write-Host "  Fetching Millie skill catalog..." -ForegroundColor DarkGray
+    Write-Host "  $url" -ForegroundColor DarkGray
 
     try {
         $manifest = Invoke-RestMethod -Uri $url
-        if (-not $manifest.skills) {
-            throw "Manifest has no skills array."
-        }
+        if ($null -eq $manifest) { throw "The manifest response was empty." }
+        if (-not $manifest.skills) { throw "The manifest does not contain a skills array." }
+        Write-Success "Skill catalog loaded."
         return $manifest
     }
     catch {
-        Write-ErrorLine "Could not load skills.json"
-        Write-Host "  $url" -ForegroundColor DarkGray
+        Write-ErrorLine "Could not load the Millie skill catalog."
+        Write-Host ""
+        Write-Host "  Expected manifest:" -ForegroundColor DarkGray
+        Write-Host "  $url" -ForegroundColor Yellow
+        Write-Host ""
+        Write-Host "  Ensure millie-installer/skills.json exists on branch '$Branch'." -ForegroundColor DarkGray
         throw
     }
 }
 
-# ------------------------------------------------------------
-# Platform definitions
-# ------------------------------------------------------------
-
 function Get-PlatformDefinitions {
-    $definitions = @(
+    return @(
         [pscustomobject]@{
-            Id = "claude"
-            Name = "Claude Code"
-            Path = Join-Path $HOME ".claude/skills"
-            Commands = @("claude")
-            Notes = "Personal skills available across Claude Code projects."
+            Id="claude"; Name="Claude Code"; Path=(Join-Path $HOME ".claude\skills");
+            Commands=@("claude"); Notes="Personal Claude Code skills."
         },
         [pscustomobject]@{
-            Id = "antigravity"
-            Name = "Google Antigravity"
-            Path = Join-Path $HOME ".gemini/config/skills"
-            Commands = @("antigravity")
-            Notes = "Global Antigravity IDE skills."
+            Id="antigravity"; Name="Google Antigravity"; Path=(Join-Path $HOME ".gemini\config\skills");
+            Commands=@("antigravity"); Notes="Global Antigravity IDE skills."
         },
         [pscustomobject]@{
-            Id = "antigravity-cli"
-            Name = "Antigravity CLI"
-            Path = Join-Path $HOME ".gemini/antigravity-cli/skills"
-            Commands = @("agy")
-            Notes = "Global Antigravity CLI skills."
+            Id="antigravity-cli"; Name="Antigravity CLI"; Path=(Join-Path $HOME ".gemini\antigravity-cli\skills");
+            Commands=@("agy"); Notes="Global Antigravity CLI skills."
         },
         [pscustomobject]@{
-            Id = "vscode"
-            Name = "VS Code / GitHub Copilot"
-            Path = Join-Path $HOME ".copilot/skills"
-            Commands = @("code", "copilot")
-            Notes = "Personal Agent Skills used by VS Code/Copilot."
+            Id="vscode"; Name="VS Code / GitHub Copilot"; Path=(Join-Path $HOME ".copilot\skills");
+            Commands=@("code","copilot"); Notes="Personal VS Code / Copilot Agent Skills."
         },
         [pscustomobject]@{
-            Id = "cursor"
-            Name = "Cursor"
-            Path = Join-Path $HOME ".cursor/skills"
-            Commands = @("cursor")
-            Notes = "Personal Cursor skills."
+            Id="cursor"; Name="Cursor"; Path=(Join-Path $HOME ".cursor\skills");
+            Commands=@("cursor"); Notes="Personal Cursor skills."
         },
         [pscustomobject]@{
-            Id = "codex"
-            Name = "OpenAI Codex"
-            Path = Join-Path $HOME ".agents/skills"
-            Commands = @("codex")
-            Notes = "User Agent Skills scanned by Codex."
+            Id="codex"; Name="OpenAI Codex"; Path=(Join-Path $HOME ".agents\skills");
+            Commands=@("codex"); Notes="Personal Codex Agent Skills."
         },
         [pscustomobject]@{
-            Id = "gemini"
-            Name = "Gemini CLI"
-            Path = Join-Path $HOME ".gemini/skills"
-            Commands = @("gemini")
-            Notes = "Global Gemini CLI skills."
+            Id="gemini"; Name="Gemini CLI"; Path=(Join-Path $HOME ".gemini\skills");
+            Commands=@("gemini"); Notes="Global Gemini CLI skills."
         }
     )
-
-    return $definitions
 }
 
 function Test-AnyCommand {
     param([string[]]$Names)
-
     foreach ($name in $Names) {
-        if (Get-Command $name -ErrorAction SilentlyContinue) {
-            return $true
-        }
+        if (Get-Command $name -ErrorAction SilentlyContinue) { return $true }
     }
     return $false
 }
 
-function Get-DetectedPlatforms {
-    $detected = @()
-
-    foreach ($p in (Get-PlatformDefinitions)) {
-        $commandDetected = Test-AnyCommand $p.Commands
-        $pathDetected = Test-Path (Split-Path $p.Path -Parent)
-
-        if ($commandDetected -or $pathDetected) {
-            $detected += $p
-        }
-    }
-
-    return $detected
+function Test-PlatformDetected {
+    param($PlatformDefinition)
+    if (Test-AnyCommand $PlatformDefinition.Commands) { return $true }
+    $parent = Split-Path $PlatformDefinition.Path -Parent
+    return (Test-Path $parent)
 }
 
-# ------------------------------------------------------------
-# Interactive selectors
-# ------------------------------------------------------------
+function Get-DetectedPlatforms {
+    $found = @()
+    foreach ($p in (Get-PlatformDefinitions)) {
+        if (Test-PlatformDetected $p) { $found += $p }
+    }
+    return $found
+}
 
 function Select-SkillsInteractive {
     param($Manifest)
 
     Write-Section "SELECT SKILL"
-
     $skills = @($Manifest.skills)
 
-    for ($i = 0; $i -lt $skills.Count; $i++) {
+    for ($i=0; $i -lt $skills.Count; $i++) {
         $s = $skills[$i]
         $number = $i + 1
 
         if ($s.status -eq "available") {
-            Write-Host ("  [{0,2}] " -f $number) -ForegroundColor Cyan -NoNewline
-            Write-Host $s.name -ForegroundColor White -NoNewline
-            Write-Host ("  — " + $s.short) -ForegroundColor DarkGray
-        }
-        else {
+            Write-Host ("  [{0,2}] " -f $number) -ForegroundColor Yellow -NoNewline
+            Write-Host $s.name -ForegroundColor White
+            Write-Host ("       " + $s.short) -ForegroundColor DarkGray
+        } else {
             Write-Host ("  [{0,2}] " -f $number) -ForegroundColor DarkGray -NoNewline
             Write-Host $s.name -ForegroundColor DarkGray -NoNewline
             Write-Host "  [COMING SOON]" -ForegroundColor DarkYellow
         }
+        Write-Host ""
     }
 
-    Write-Host ""
     Write-Host "  [ A] Install ALL available skills" -ForegroundColor Green
     Write-Host "  [ Q] Quit" -ForegroundColor DarkGray
     Write-Host ""
@@ -255,24 +278,19 @@ function Select-SkillsInteractive {
     while ($true) {
         $choice = (Read-Host "  Choose a skill").Trim()
 
-        if ($choice -match '^[Qq]$') {
-            return @()
-        }
-
+        if ($choice -match '^[Qq]$') { return @() }
         if ($choice -match '^[Aa]$') {
             return @($skills | Where-Object { $_.status -eq "available" })
         }
 
-        $n = 0
-        if ([int]::TryParse($choice, [ref]$n)) {
-            if ($n -ge 1 -and $n -le $skills.Count) {
-                $selected = $skills[$n - 1]
-
+        $number = 0
+        if ([int]::TryParse($choice, [ref]$number)) {
+            if ($number -ge 1 -and $number -le $skills.Count) {
+                $selected = $skills[$number-1]
                 if ($selected.status -ne "available") {
-                    Write-WarningLine "$($selected.name) is not published yet."
+                    Write-WarningLine "$($selected.name) is coming soon."
                     continue
                 }
-
                 return @($selected)
             }
         }
@@ -283,28 +301,23 @@ function Select-SkillsInteractive {
 
 function Select-PlatformsInteractive {
     $platforms = @(Get-PlatformDefinitions)
-
     Write-Section "SELECT PLATFORM"
 
-    for ($i = 0; $i -lt $platforms.Count; $i++) {
+    for ($i=0; $i -lt $platforms.Count; $i++) {
         $p = $platforms[$i]
-        $detected = Test-AnyCommand $p.Commands
+        $detected = Test-PlatformDetected $p
 
-        Write-Host ("  [{0,2}] " -f ($i + 1)) -ForegroundColor Cyan -NoNewline
+        Write-Host ("  [{0,2}] " -f ($i+1)) -ForegroundColor Yellow -NoNewline
         Write-Host $p.Name -ForegroundColor White -NoNewline
 
-        if ($detected) {
-            Write-Host "  [DETECTED]" -ForegroundColor Green
-        }
-        else {
-            Write-Host ""
-        }
+        if ($detected) { Write-Host "  [DETECTED]" -ForegroundColor Green }
+        else { Write-Host "" }
 
         Write-Host ("       " + $p.Path) -ForegroundColor DarkGray
+        Write-Host ""
     }
 
-    Write-Host ""
-    Write-Host "  [ D] Auto-detect installed platforms" -ForegroundColor Yellow
+    Write-Host "  [ D] Auto-detect installed platforms" -ForegroundColor DarkYellow
     Write-Host "  [ A] Install to ALL supported platforms" -ForegroundColor Green
     Write-Host "  [ Q] Quit" -ForegroundColor DarkGray
     Write-Host ""
@@ -312,30 +325,24 @@ function Select-PlatformsInteractive {
     while ($true) {
         $choice = (Read-Host "  Choose a platform").Trim()
 
-        if ($choice -match '^[Qq]$') {
-            return @()
-        }
-
-        if ($choice -match '^[Aa]$') {
-            return $platforms
-        }
+        if ($choice -match '^[Qq]$') { return @() }
+        if ($choice -match '^[Aa]$') { return $platforms }
 
         if ($choice -match '^[Dd]$') {
             $detected = @(Get-DetectedPlatforms)
             if ($detected.Count -eq 0) {
-                Write-WarningLine "No supported platform was confidently detected."
-                Write-Host "  Select a platform manually; Millie can create its global skill directory." -ForegroundColor DarkGray
+                Write-WarningLine "No supported platform could be confidently detected."
+                Write-Host "  Choose a platform manually." -ForegroundColor DarkGray
                 continue
             }
-
-            Write-Success ("Detected: " + (($detected | ForEach-Object { $_.Name }) -join ", "))
+            Write-Success ("Detected: " + (($detected | ForEach-Object {$_.Name}) -join ", "))
             return $detected
         }
 
-        $n = 0
-        if ([int]::TryParse($choice, [ref]$n)) {
-            if ($n -ge 1 -and $n -le $platforms.Count) {
-                return @($platforms[$n - 1])
+        $number = 0
+        if ([int]::TryParse($choice, [ref]$number)) {
+            if ($number -ge 1 -and $number -le $platforms.Count) {
+                return @($platforms[$number-1])
             }
         }
 
@@ -343,72 +350,57 @@ function Select-PlatformsInteractive {
     }
 }
 
-# ------------------------------------------------------------
-# Download
-# ------------------------------------------------------------
-
-function Get-RepositoryArchive {
+function Download-RepositoryArchive {
     param([string]$TempRoot)
 
-    $zipPath = Join-Path $TempRoot "millie-repository.zip"
+    $zipPath = Join-Path $TempRoot "millieskills.zip"
     $extractPath = Join-Path $TempRoot "repository"
-
     $url = "https://codeload.github.com/$Repository/zip/refs/heads/$Branch"
 
     Write-Section "DOWNLOAD"
-    Write-Host "  Repository: " -ForegroundColor DarkGray -NoNewline
+    Write-Host "  Repository : " -ForegroundColor DarkGray -NoNewline
     Write-Host $Repository -ForegroundColor White
-    Write-Host "  Branch:     " -ForegroundColor DarkGray -NoNewline
+    Write-Host "  Branch     : " -ForegroundColor DarkGray -NoNewline
     Write-Host $Branch -ForegroundColor White
-
     Write-Host ""
-    Write-Host "  Downloading repository archive..." -ForegroundColor Cyan
+    Write-Host "  Downloading repository archive..." -ForegroundColor DarkYellow
 
-    Invoke-WebRequest -Uri $url -OutFile $zipPath -UseBasicParsing
+    Invoke-WebRequest -Uri $url -OutFile $zipPath
 
-    Write-Host "  Extracting..." -ForegroundColor Cyan
+    Write-Host "  Extracting repository..." -ForegroundColor DarkYellow
+    New-Item -ItemType Directory -Force -Path $extractPath | Out-Null
     Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
 
-    $repoRoot = Get-ChildItem $extractPath -Directory | Select-Object -First 1
-
-    if (-not $repoRoot) {
-        throw "Could not locate extracted repository root."
-    }
+    $repoRoot = Get-ChildItem -Path $extractPath -Directory | Select-Object -First 1
+    if ($null -eq $repoRoot) { throw "Could not locate extracted repository root." }
 
     Write-Success "Repository downloaded."
     return $repoRoot.FullName
 }
 
-# ------------------------------------------------------------
-# Registry
-# ------------------------------------------------------------
-
 function Get-Registry {
     if (-not (Test-Path $Script:RegistryPath)) {
-        return [pscustomobject]@{
-            schema_version = 1
-            installations = @()
-        }
+        return [pscustomobject]@{ schema_version=1; installations=@() }
     }
 
     try {
-        return (Get-Content $Script:RegistryPath -Raw | ConvertFrom-Json)
+        $registry = Get-Content $Script:RegistryPath -Raw | ConvertFrom-Json
+        if ($null -eq $registry.installations) {
+            $registry | Add-Member -NotePropertyName installations -NotePropertyValue @()
+        }
+        return $registry
     }
     catch {
-        Write-WarningLine "Existing Millie install registry is invalid; rebuilding it."
-        return [pscustomobject]@{
-            schema_version = 1
-            installations = @()
-        }
+        Write-WarningLine "Existing Millie registry is invalid. Rebuilding it."
+        return [pscustomobject]@{ schema_version=1; installations=@() }
     }
 }
 
 function Save-Registry {
     param($Registry)
-
     $dir = Split-Path $Script:RegistryPath -Parent
     New-Item -ItemType Directory -Force -Path $dir | Out-Null
-    $Registry | ConvertTo-Json -Depth 8 | Set-Content -Path $Script:RegistryPath -Encoding UTF8
+    $Registry | ConvertTo-Json -Depth 10 | Set-Content -Path $Script:RegistryPath -Encoding UTF8
 }
 
 function Record-Installation {
@@ -428,46 +420,36 @@ function Record-Installation {
     })
 
     $items += [pscustomobject]@{
-        skill = $SkillId
-        skill_name = $SkillName
-        platform = $PlatformId
-        platform_name = $PlatformName
-        path = $Destination
-        repository = $Repository
-        branch = $Branch
-        installed_at = (Get-Date).ToString("o")
-        installer_version = $Script:InstallerVersion
+        skill=$SkillId
+        skill_name=$SkillName
+        platform=$PlatformId
+        platform_name=$PlatformName
+        path=$Destination
+        repository=$Repository
+        branch=$Branch
+        installed_at=(Get-Date).ToString("o")
+        installer_version=$Script:InstallerVersion
     }
 
     $registry.installations = $items
     Save-Registry $registry
 }
 
-# ------------------------------------------------------------
-# Installation
-# ------------------------------------------------------------
+function Confirm-ExistingInstallation {
+    param([string]$SkillName,[string]$Destination)
 
-function Confirm-ReplaceExisting {
-    param(
-        [string]$SkillName,
-        [string]$Path
-    )
-
-    if ($Force) {
-        return "replace"
-    }
+    if ($Force) { return "replace" }
 
     Write-WarningLine "$SkillName is already installed:"
-    Write-Host "       $Path" -ForegroundColor DarkGray
+    Write-Host "       $Destination" -ForegroundColor DarkGray
     Write-Host ""
     Write-Host "       [R] Replace / update" -ForegroundColor Yellow
-    Write-Host "       [B] Backup existing, then update" -ForegroundColor Cyan
+    Write-Host "       [B] Backup existing, then update" -ForegroundColor DarkYellow
     Write-Host "       [S] Skip" -ForegroundColor DarkGray
 
     while ($true) {
-        $choice = (Read-Host "       Choice").Trim().ToLowerInvariant()
-
-        switch ($choice) {
+        $answer = (Read-Host "       Choice").Trim().ToLowerInvariant()
+        switch ($answer) {
             "r" { return "replace" }
             "b" { return "backup" }
             "s" { return "skip" }
@@ -477,27 +459,30 @@ function Confirm-ReplaceExisting {
 }
 
 function Install-OneSkill {
-    param(
-        $SkillDefinition,
-        $PlatformDefinition,
-        [string]$RepositoryRoot
-    )
+    param($SkillDefinition,$PlatformDefinition,[string]$RepositoryRoot)
 
-    $source = Join-Path $RepositoryRoot ($SkillDefinition.path -replace '/', [IO.Path]::DirectorySeparatorChar)
+    $relativeSource = $SkillDefinition.path -replace '/', [IO.Path]::DirectorySeparatorChar
+    $source = Join-Path $RepositoryRoot $relativeSource
     $skillFile = Join-Path $source "SKILL.md"
 
+    if (-not (Test-Path $source)) {
+        Write-ErrorLine "Skill source folder not found:"
+        Write-Host "       $source" -ForegroundColor DarkGray
+        return $false
+    }
+
     if (-not (Test-Path $skillFile)) {
-        Write-ErrorLine "$($SkillDefinition.name): SKILL.md was not found at $($SkillDefinition.path)"
+        Write-ErrorLine "$($SkillDefinition.name) does not contain SKILL.md."
+        Write-Host "       $skillFile" -ForegroundColor DarkGray
         return $false
     }
 
     $platformRoot = $PlatformDefinition.Path
     New-Item -ItemType Directory -Force -Path $platformRoot | Out-Null
-
     $destination = Join-Path $platformRoot $SkillDefinition.id
 
     if (Test-Path $destination) {
-        $action = Confirm-ReplaceExisting -SkillName $SkillDefinition.name -Path $destination
+        $action = Confirm-ExistingInstallation -SkillName $SkillDefinition.name -Destination $destination
 
         if ($action -eq "skip") {
             Write-WarningLine "Skipped $($SkillDefinition.name) for $($PlatformDefinition.Name)."
@@ -508,9 +493,11 @@ function Install-OneSkill {
             $stamp = Get-Date -Format "yyyyMMdd-HHmmss"
             $backup = "$destination.__backup_$stamp"
             Move-Item -Path $destination -Destination $backup
-            Write-Success "Existing skill backed up to $backup"
+            Write-Success "Backed up previous install:"
+            Write-Host "       $backup" -ForegroundColor DarkGray
         }
-        elseif ($action -eq "replace") {
+
+        if ($action -eq "replace") {
             Remove-Item -Path $destination -Recurse -Force
         }
     }
@@ -518,7 +505,7 @@ function Install-OneSkill {
     Copy-Item -Path $source -Destination $destination -Recurse -Force
 
     if (-not (Test-Path (Join-Path $destination "SKILL.md"))) {
-        Write-ErrorLine "Installation verification failed: $destination"
+        Write-ErrorLine "Installation verification failed."
         return $false
     }
 
@@ -535,129 +522,89 @@ function Install-OneSkill {
 }
 
 function Install-Selections {
-    param(
-        [array]$Skills,
-        [array]$Platforms,
-        [string]$RepositoryRoot
-    )
+    param([array]$Skills,[array]$Platforms,[string]$RepositoryRoot)
 
     Write-Section "INSTALL"
-
-    $success = 0
-    $failed = 0
+    $successCount = 0
+    $failureCount = 0
 
     foreach ($platform in $Platforms) {
         Write-Host ""
-        Write-Host ("  " + $platform.Name) -ForegroundColor Magenta
+        Write-Host ("  " + $platform.Name) -ForegroundColor Yellow
         Write-Host ("  " + $platform.Notes) -ForegroundColor DarkGray
 
         foreach ($skill in $Skills) {
             try {
                 if (Install-OneSkill -SkillDefinition $skill -PlatformDefinition $platform -RepositoryRoot $RepositoryRoot) {
-                    $success++
-                }
-                else {
-                    $failed++
+                    $successCount++
+                } else {
+                    $failureCount++
                 }
             }
             catch {
-                $failed++
+                $failureCount++
                 Write-ErrorLine "$($skill.name) -> $($platform.Name): $($_.Exception.Message)"
             }
         }
     }
 
     Write-Section "RESULT"
-    Write-Success "$success installation(s) completed."
-
-    if ($failed -gt 0) {
-        Write-ErrorLine "$failed installation(s) failed."
-    }
+    Write-Success "$successCount installation(s) completed."
+    if ($failureCount -gt 0) { Write-ErrorLine "$failureCount installation(s) failed." }
 
     Write-Host ""
     Write-Host "  Registry:" -ForegroundColor DarkGray
     Write-Host "  $Script:RegistryPath" -ForegroundColor DarkGray
-
     Write-Host ""
-    Write-Host "  Some agents discover new skills immediately; if a skill does not appear," -ForegroundColor DarkGray
-    Write-Host "  restart that agent/editor and try again." -ForegroundColor DarkGray
+    Write-Host "  Restart an already-open editor/agent if it does not discover the new skill immediately." -ForegroundColor DarkGray
 }
 
-# ------------------------------------------------------------
-# Non-interactive resolution
-# ------------------------------------------------------------
-
-function Resolve-SkillsFromParameters {
+function Resolve-Skills {
     param($Manifest)
 
-    $available = @($Manifest.skills | Where-Object { $_.status -eq "available" })
-
     if ($AllSkills) {
-        return $available
+        return @($Manifest.skills | Where-Object {$_.status -eq "available"})
     }
 
     if ([string]::IsNullOrWhiteSpace($Skill)) {
-        return Select-SkillsInteractive $Manifest
+        return @(Select-SkillsInteractive $Manifest)
     }
 
-    $ids = @($Skill -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ })
-
     $selected = @()
-    foreach ($id in $ids) {
-        $match = $Manifest.skills | Where-Object { $_.id -eq $id } | Select-Object -First 1
-
-        if (-not $match) {
-            throw "Unknown skill '$id'."
-        }
-        if ($match.status -ne "available") {
-            throw "Skill '$id' is not available yet."
-        }
-
+    foreach ($id in @($Skill -split ',' | ForEach-Object {$_.Trim()} | Where-Object {$_})) {
+        $match = $Manifest.skills | Where-Object {$_.id -eq $id} | Select-Object -First 1
+        if ($null -eq $match) { throw "Unknown skill '$id'." }
+        if ($match.status -ne "available") { throw "Skill '$id' is not available yet." }
         $selected += $match
     }
 
     return $selected
 }
 
-function Resolve-PlatformsFromParameters {
-    if ($AllPlatforms) {
-        return @(Get-PlatformDefinitions)
-    }
+function Resolve-Platforms {
+    if ($AllPlatforms) { return @(Get-PlatformDefinitions) }
+    if ([string]::IsNullOrWhiteSpace($Platform)) { return @(Select-PlatformsInteractive) }
+    if ($Platform -eq "detected") { return @(Get-DetectedPlatforms) }
 
-    if ([string]::IsNullOrWhiteSpace($Platform)) {
-        return @(Select-PlatformsInteractive)
-    }
-
-    if ($Platform -eq "detected") {
-        return @(Get-DetectedPlatforms)
-    }
-
-    $ids = @($Platform -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ })
     $defs = @(Get-PlatformDefinitions)
     $selected = @()
 
-    foreach ($id in $ids) {
-        $match = $defs | Where-Object { $_.Id -eq $id } | Select-Object -First 1
-        if (-not $match) {
-            throw "Unknown platform '$id'."
-        }
+    foreach ($id in @($Platform -split ',' | ForEach-Object {$_.Trim()} | Where-Object {$_})) {
+        $match = $defs | Where-Object {$_.Id -eq $id} | Select-Object -First 1
+        if ($null -eq $match) { throw "Unknown platform '$id'." }
         $selected += $match
     }
 
     return $selected
 }
 
-# ------------------------------------------------------------
-# Main
-# ------------------------------------------------------------
-
-$TempRoot = $null
+$tempRoot = $null
 
 try {
     Show-MillieBanner
 
     $manifest = Get-MillieManifest
-    $skills = @(Resolve-SkillsFromParameters $manifest)
+    $skills = @(Resolve-Skills $manifest)
 
     if ($skills.Count -eq 0) {
         Write-Host ""
@@ -665,7 +612,7 @@ try {
         return
     }
 
-    $platforms = @(Resolve-PlatformsFromParameters)
+    $platforms = @(Resolve-Platforms)
 
     if ($platforms.Count -eq 0) {
         Write-Host ""
@@ -676,44 +623,40 @@ try {
     Write-Section "CONFIRM"
 
     Write-Host "  Skills:" -ForegroundColor DarkGray
-    foreach ($s in $skills) {
-        Write-Host ("    • " + $s.name) -ForegroundColor White
-    }
+    foreach ($s in $skills) { Write-Host ("    - " + $s.name) -ForegroundColor White }
 
     Write-Host ""
     Write-Host "  Platforms:" -ForegroundColor DarkGray
-    foreach ($p in $platforms) {
-        Write-Host ("    • " + $p.Name + " -> " + $p.Path) -ForegroundColor White
-    }
+    foreach ($p in $platforms) { Write-Host ("    - " + $p.Name + " -> " + $p.Path) -ForegroundColor White }
 
     if (-not $Force) {
         Write-Host ""
-        $confirm = (Read-Host "  Continue? [Y/n]").Trim()
-        if ($confirm -match '^[Nn]$') {
+        $confirmation = (Read-Host "  Continue? [Y/n]").Trim()
+        if ($confirmation -match '^[Nn]$') {
             Write-Host "  Cancelled." -ForegroundColor Yellow
             return
         }
     }
 
-    $TempRoot = Join-Path ([IO.Path]::GetTempPath()) ("millie-" + [Guid]::NewGuid().ToString("N"))
-    New-Item -ItemType Directory -Force -Path $TempRoot | Out-Null
+    $tempRoot = Join-Path ([IO.Path]::GetTempPath()) ("millie-" + [Guid]::NewGuid().ToString("N"))
+    New-Item -ItemType Directory -Force -Path $tempRoot | Out-Null
 
-    $repositoryRoot = Get-RepositoryArchive -TempRoot $TempRoot
+    $repositoryRoot = Download-RepositoryArchive -TempRoot $tempRoot
     Install-Selections -Skills $skills -Platforms $platforms -RepositoryRoot $repositoryRoot
 
     Write-Host ""
-    Write-Center "MILLIE IS READY." Green
-    Write-Center "Open your agent and start building." Cyan
+    Write-GradientText "MILLIE IS READY"
+    Write-Center "Open your AI coding agent and start building." Yellow
     Write-Host ""
 }
 catch {
     Write-Host ""
     Write-ErrorLine $_.Exception.Message
     Write-Host ""
-    Write-Host "  Installer stopped without intentionally deleting existing skill backups." -ForegroundColor DarkGray
+    Write-Host "  Installer stopped safely." -ForegroundColor DarkGray
 }
 finally {
-    if ($TempRoot -and (Test-Path $TempRoot)) {
-        Remove-Item -Path $TempRoot -Recurse -Force -ErrorAction SilentlyContinue
+    if ($null -ne $tempRoot -and (Test-Path $tempRoot)) {
+        Remove-Item -Path $tempRoot -Recurse -Force -ErrorAction SilentlyContinue
     }
 }
