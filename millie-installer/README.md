@@ -6,7 +6,7 @@
 ## Quick Install — PowerShell
 
 ```powershell
-irm https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/cassielxyz/millieskills/tree/main/millie-installer/install.ps1 | iex
 ```
 
 The installer opens an interactive terminal UI:
