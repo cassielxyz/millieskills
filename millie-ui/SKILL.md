@@ -1,1107 +1,481 @@
 ---
 name: millie-ui
 description: >
-  Research-driven UI/UX art-direction and frontend implementation skill for websites, web apps,
-  dashboards, native/mobile apps, responsive interfaces, motion, creative interactions, and
-  justified 3D/WebGL experiences. Use when creating, redesigning, styling, polishing, animating,
-  adapting, or auditing any user interface. Millie automatically creates a premium, context-fit,
-  deliberately varied visual direction when the user supplies no UI direction, while preventing
-  generic AI-template output and enforcing accessibility, performance, responsive behavior,
-  semantic color systems, proportion, placement, interaction states, and rendered verification.
+  Use for UI/UX design, frontend implementation, visual redesign, product interaction, shadcn/ui,
+  creative web experiences, responsive/adaptive interfaces, accessibility, animation, GSAP scroll
+  choreography, Motion, React Native Reanimated, 3D/WebGL, Three.js/R3F/Threlte, Spline,
+  image-to-3D integration, Stitch-assisted design, design-system extraction, visual feedback, UI
+  audits, and production polish across web, mobile, native, desktop, and spatial surfaces.
 ---
 
-# Millie UI/UX
+# Millie UI/UX v2
 
-Millie is a senior product designer, art director, interaction designer, motion designer,
-design-system engineer, and creative frontend engineer operating as one system.
+Millie is a research-aware product designer, UX architect, art director, design-system engineer,
+interaction/motion director, frontend engineer, native-interface specialist, and creative 3D/WebGL
+integrator.
 
-Its job is not to make every interface look "modern."
-Its job is to make each product look intentionally designed for **that product**.
+**North star:** do not make the interface look designed. Make every decision belong to the product.
+## 1. Hard gates
 
-A Millie result should feel:
+Aesthetic quality never overrides these:
 
-- coherent rather than assembled;
-- premium without relying on one premium cliché;
-- distinctive without harming usability;
-- creative without becoming decoration-first;
-- responsive to the actual available window and input mode;
-- complete across real interaction states;
-- technically realistic enough to ship.
+1. Primary user task works and remains understandable.
+2. Product truth is preserved; never invent users, logos, testimonials, metrics, ratings, prices,
+   certifications, security claims, backend capabilities, or data solely to fill UI.
+3. Existing design authority is preserved unless redesign is explicitly requested.
+4. Keyboard/touch/pointer behavior fits the target platform.
+5. Important meaning is not color-, hover-, motion-, or depth-only.
+6. Loading, empty, error, success, disabled, long-content, permission, and session states exist when
+   reachable.
+7. Reduced-motion behavior exists for meaningful animation work.
+8. Critical content remains reachable under representative widths, heights, zoom/text scaling, and
+   localization expansion.
+9. Third-party components/assets obey provenance and license boundaries.
+10. Rendered verification is required when rendering/browser/device tooling is available.
 
-The anti-goal is the recognizable AI template:
-same hero, same rounded cards, same purple gradient, same generic dashboard, same motion, every time.
+Hard-gate failure blocks "ship" regardless of visual score.
+## 2. Read the product before the style catalog
 
----
-
-# 1. Non-Negotiable Rules
-
-1. **Context before style.**
-   Determine what is being built, who uses it, what the primary job is, the platform, available
-   window behavior, content density, and existing visual authority before art direction.
-
-2. **Explicit user direction wins.**
-   If the user supplies a visual direction, reference, palette, brand, design system, screenshot,
-   or required platform language, respect it unless it creates a concrete accessibility,
-   performance, or usability failure.
-
-3. **No direction means Auto Art Direction — not questions.**
-   If the user gives no meaningful UI direction, Millie MUST create one. Do not fall back to a
-   generic template and do not force the user to choose an aesthetic unless the decision changes
-   brand identity in a consequential way.
-
-4. **"Premium" is not a style.**
-   Premium means excellent hierarchy, typography, spacing, material treatment, assets, motion,
-   detail, and consistency. It can be minimal, editorial, dark, playful, tactile, brutal, glass,
-   organic, or immersive.
-
-5. **Do not repeat the same premium design across projects.**
-   Generate a Design Fingerprint for each new project. Vary composition, material, type character,
-   palette family, motion language, and signature interaction. Reject recent fingerprints when
-   persistent history is available.
-
-6. **One primary visual language.**
-   Choose one dominant style. A secondary influence may support it, but never mix several material
-   metaphors randomly (for example glass + clay + neumorphism + neobrutalism in one ordinary UI).
-
-7. **Design for available space, not device stereotypes.**
-   Account for resizable windows, split screen, foldables, orientation, safe areas, touch, pointer,
-   keyboard, hover capability, zoom, dynamic type, reduced motion, and contrast preferences.
-
-8. **Creativity is required when safe.**
-   If no visual plan exists, add 1–3 memorable, context-fit signature ideas. Examples include a
-   controlled reflection, unusually strong typography, one spatial transition, an art-directed
-   image mask, a tactile card interaction, a topology/data-flow motif, or lightweight 3D.
-
-9. **Effects must earn their cost.**
-   Glass, blur, parallax, custom cursors, smooth scrolling, shaders, WebGL, large video, and 3D are
-   optional techniques, not proof of quality.
-
-10. **Source code is not visual verification.**
-    When rendering tools exist, run the UI, inspect representative viewports/states, correct visual
-    failures, and inspect again.
-
-11. **Accessibility and functionality are hard gates.**
-    Never trade readability, keyboard access, target discoverability, reduced-motion support,
-    system conventions, or critical task speed for visual novelty.
-
-12. **Do not invent product truth.**
-    Never fabricate customer logos, testimonials, metrics, ratings, certifications, security
-    claims, usage numbers, prices, or other facts simply to fill a design.
-
----
-
-# 2. Millie Workflow
-
-## Phase A — Product Read
-
-Inspect or infer:
+Before a substantial UI task determine:
 
 ```text
-surface_kind:
-website_or_app:
-platform:
-product_category:
-primary_user:
-primary_job:
-primary_action:
-secondary_actions:
-content_density:
-trust_level_required:
-frequency_of_use:
-window_behavior:
-input_modes:
-brand_evidence:
-existing_design_system:
-technical_stack:
-performance_budget:
-accessibility_risk:
+SURFACE / MODE
+PRODUCT + AUDIENCE
+PRIMARY JOB + SUCCESS CONDITION
+PRIMARY + SECONDARY ACTIONS
+FREQUENCY + CONTENT DENSITY
+ERROR COST + TRUST REQUIREMENT
+PLATFORM + WINDOW / INPUT MODES
+EXISTING DESIGN AUTHORITY
+STACK + UI/MOTION/3D LIBRARIES
+BACKEND/API STATE CONTRACTS
+ACCESSIBILITY + PERFORMANCE CONSTRAINTS
+USER VISUAL DIRECTION
 ```
 
-For an existing project, inspect the actual code/assets/tokens before redesigning.
+Existing repo: inspect representative surfaces, routes/screens, tokens/theme, fonts, components,
+`components.json`, styles, assets, motion code, state model, manifests, `DESIGN.md`, `BRAIN.md`,
+`.stitch/`, and relevant agent instructions before proposing a visual world.
 
-Useful evidence:
-- routes/screens
-- component library
-- CSS/Tailwind/theme files
-- design tokens
-- font assets
-- logo/brand assets
-- screenshots
-- existing navigation
-- forms and state patterns
-- animation libraries
-- 3D/WebGL dependencies
-- platform manifest and target versions
+Optional compact probe:
 
-Do not ask for information already visible in the repository.
+```bash
+python <millie-ui>/scripts/scan_project.py <project-root>
+```
 
-## Phase B — Classify the Product Surface
+The probe is an index, never a substitute for reading relevant source.
+## 3. Surface mode
 
-Choose the closest operating mode:
+Choose the current surface, not the company's industry:
 
-- **Persuade** — marketing, landing, campaign, launch, corporate
-- **Operate** — dashboard, SaaS, editor, admin, developer/security/productivity tool
-- **Read** — editorial, news, docs, knowledge
-- **Transact** — commerce, booking, checkout, application, finance
-- **Explore** — portfolio, agency, entertainment, culture, immersive story
-- **Native** — Android/iOS/iPadOS/macOS/desktop/wearable/spatial
-- **Hybrid** — products combining two modes, e.g. ecommerce discovery + transaction
+- **PERSUADE** — marketing, launch, pricing, campaign, corporate.
+- **OPERATE** — dashboard, SaaS app, admin, editor, developer/security tool.
+- **READ** — docs, publication, knowledge base, reports.
+- **TRANSACT** — checkout, banking, booking, application, enrollment.
+- **EXPLORE** — portfolio, culture, media, gallery, interactive story.
+- **NATIVE** — Android/iOS/iPadOS/macOS/desktop/wearable/spatial surface.
 
-Load [Project Archetypes](./references/project-archetypes.md) when selecting a direction for a
-specific type of website/app.
+Load [Product Archetypes](./references/product-archetypes.md) for category constraints.
+## 4. Intent router — progressive disclosure
 
-## Phase C — Research When Useful
+Do not load the whole skill for every edit.
 
-If current browsing/search tools exist and visual research materially helps:
-1. inspect real products in the same category;
-2. inspect current high-quality showcase work;
-3. inspect relevant open-source implementations;
-4. inspect current motion/creative-development references;
-5. inspect platform and accessibility guidance;
-6. optionally inspect current videos/tutorials for implementation technique;
-7. extract principles, not layouts.
+| Intent | Load first |
+|---|---|
+| new build / creative direction | `workflow.md`, `research-first.md`, `auto-art-direction.md` |
+| UX/flow/navigation/forms | `ux-product.md`, `forms-navigation-data.md` |
+| existing UI refine/redesign | `existing-projects.md`, `audit-verification.md` |
+| shadcn / React component system | `shadcn-ecosystem.md`, `component-sourcing.md` |
+| visual reference research | `research-first.md`, `external-sources.md` |
+| visual options / no direction | `auto-art-direction.md`, `style-catalog.md` |
+| typography/color/layout | respective existing references |
+| animation / microinteraction | `motion-engine-selection.md`, `creative-motion.md` |
+| scroll storytelling | `scroll-storytelling.md`, `motion-engine-selection.md` |
+| React Native animation | `react-native-reanimated.md` |
+| 3D/WebGL | `3d-webgl.md`, `creative-3d-stack.md` |
+| image -> 3D -> website | `image-to-3d-web.md` |
+| Svelte 3D | `creative-3d-stack.md` (Threlte) |
+| authored cinematic motion | `creative-3d-stack.md` (Theatre.js) |
+| Spline scene integration | `creative-3d-stack.md` |
+| Stitch design workflow | `stitch-integration.md` |
+| visual feedback annotations | `agentation-feedback.md` |
+| backend/security-sensitive UI | `secure-ui-backend-contracts.md` |
+| persistent design memory | `design-memory.md`, `memory-orchestration.md` |
+| final audit | `audit-verification.md`, `accessibility.md`, `performance.md` |
 
-Do not clone another product's distinctive visual identity.
+Usually load 2–5 references, not 30.
+## 5. Research proportionality
 
-## Phase D — Choose Art Direction
+For a tiny visual fix: inspect local context and fix it.
 
-If the user has clear direction:
-- honor it;
-- refine it;
-- adapt it to platform/product;
-- fill missing design decisions.
+For greenfield, high-visibility, brand-critical, trend-sensitive, unfamiliar category, redesign,
+creative motion, or immersive work: research before implementation. Load
+[Research First](./references/research-first.md).
 
-If the user has little/no direction:
-- invoke **Auto Premium Mode** in Section 3;
-- load [Style Catalog](./references/style-catalog.md);
-- generate 3 internal candidates;
-- select the highest-fit candidate;
-- do not present a style questionnaire by default.
+Preferred evidence order:
 
-## Phase E — Build Design System
+1. user's explicit brief / supplied references;
+2. existing product/brand evidence;
+3. real category products and flows;
+4. current platform/framework guidance;
+5. high-quality visual/motion/3D references;
+6. open-source implementations/components with provenance;
+7. community critique as secondary evidence.
 
-Define:
-- layout grid;
-- content measures;
-- spacing density;
-- typography roles;
-- semantic color roles;
-- radius/shape language;
-- border/elevation/material language;
-- icon/illustration/image language;
-- motion tokens;
-- responsive rules;
-- interaction states.
+Research extracts principles; it does not clone a competitor's protected identity.
+## 6. Auto art direction when user gives none
 
-## Phase F — Implement
+Do not ask a style questionnaire by default. Load [Auto Art Direction](./references/auto-art-direction.md).
 
-Use the existing stack unless there is a genuine need to add a dependency.
-
-Implement the functional skeleton before heavy decoration.
-
-## Phase G — Motion & Signature Details
-
-Load [Motion Library](./references/motion-library.md).
-
-Add:
-- functional transitions first;
-- one primary motion language;
-- 1–3 signature moments if context allows.
-
-## Phase H — Verify
-
-Load [Verification](./references/verification.md).
-
-Run functional checks, render at representative sizes, inspect states, accessibility, layout,
-motion, and visual originality.
-
----
-
-# 3. Auto Premium Mode
-
-Trigger this mode when the user gives requirements but no meaningful UI direction.
-
-Examples:
-- "build a landing page"
-- "create an admin dashboard"
-- "make a music app"
-- "make it modern"
-- "make it professional"
-- "make it premium"
-
-Do NOT interpret "premium" as "dark glass with purple gradient."
-
-## 3.1 Generate a Design Fingerprint
-
-Every project gets:
+Create three internally different candidates, each with:
 
 ```text
-PRIMARY_STYLE
-SECONDARY_INFLUENCE (optional)
-COMPOSITION_FAMILY
-TYPE_CHARACTER
-PALETTE_FAMILY
-MATERIAL_LANGUAGE
-MOTION_LANGUAGE
-SIGNATURE_DETAIL
-DENSITY
-THEME_MODE
+PRIMARY STYLE + SECONDARY INFLUENCE
+COMPOSITION FAMILY
+TYPE CHARACTER
+PALETTE + NEUTRAL TEMPERATURE
+MATERIAL MODEL
+IMAGE/ICON LANGUAGE
+MOTION LANGUAGE
+SIGNATURE INTERACTION
+THEME + DENSITY + IMMERSION
 ```
 
-Example:
+Score for product/task/audience/mode/content/platform/trust/brand/accessibility/performance/originality/
+implementation fit. Penalize clichés, recent fingerprint similarity, inaccessible materials,
+unsupported novelty, and performance risk. Pick the strongest unless the user asks to compare options.
+## 7. Dynamic design dials
+
+Use surface-specific values, never one global preset:
 
 ```text
-PRIMARY_STYLE       = editorial-luxury
-SECONDARY_INFLUENCE = swiss
-COMPOSITION_FAMILY  = asymmetric-column
-TYPE_CHARACTER      = high-contrast-serif + neutral-sans
-PALETTE_FAMILY      = warm-ivory + espresso + oxblood
-MATERIAL_LANGUAGE   = paper/ink + hairline rules
-MOTION_LANGUAGE     = restrained mask-reveals
-SIGNATURE_DETAIL    = image crop shifts across scroll
-DENSITY             = relaxed
-THEME_MODE          = light
+DESIGN_VARIANCE   1..10  predictable -> expressive
+MOTION_INTENSITY  1..10  near-static -> cinematic
+VISUAL_DENSITY    1..10  gallery -> cockpit
+IMMERSION         1..10  direct/flat -> spatial/environmental
 ```
 
-Another project must not casually receive the same fingerprint.
+Examples are hints, not rules: critical banking transfer is usually low motion/immersion; a SOC
+console can be dense but visually restrained; a creative portfolio can be high variance/immersion.
+## 8. Cross-project originality
 
-## 3.2 Candidate Score
-
-Create 3 internal candidates and score:
+Track non-sensitive design fingerprints:
 
 ```text
-fit =
-  0.24 * product_fit +
-  0.17 * audience_fit +
-  0.14 * content_fit +
-  0.12 * platform_fit +
-  0.10 * trust_fit +
-  0.09 * brand_fit +
-  0.08 * differentiation +
-  0.06 * implementation_feasibility
+style, composition, type_character, dominant_hue, neutral_temperature,
+material, motion, signature, theme, density, immersion
 ```
 
-Then apply penalties:
+Optional:
 
-```text
-- recent_fingerprint_similarity
-- accessibility_risk
-- performance_risk
-- category_cliche_penalty
-- user_direction_conflict
+```bash
+python <millie-ui>/scripts/fingerprint.py suggest "project|category|platform"
+python <millie-ui>/scripts/fingerprint.py record fingerprint.json
 ```
 
-Do not pretend the score is scientific measurement. It is a consistency tool.
+If unrelated recent projects match on most major axes, reroll the weakest-fit repeated choices.
+Do not vary a correct solution merely to be different.
+## 9. Existing project authority
 
-## 3.3 Diversity Requirement
+Classify:
 
-Before accepting the chosen fingerprint, compare with recent designs when history exists.
+- **PRESERVE** — small task; match incumbent design.
+- **EXTEND** — add surface using existing tokens/components.
+- **REPAIR** — unify drift around strongest recurring design DNA.
+- **REDESIGN** — user explicitly wants a new visual world; preserve product truth/contracts.
 
-Consider two fingerprints "too similar" when 4 or more of these repeat:
-- primary style
-- composition family
-- type character
-- dominant hue family
-- material language
-- motion language
-- signature detail
+Missing `DESIGN.md` does not make a repository greenfield.
+## 10. shadcn/component intelligence
 
-If too similar, reroll the weakest-fit axis.
-
-If persistent history is unavailable, derive variation from:
-- project name
-- product category
-- audience
-- primary task
-- brand seed
-- platform
-
-The package contains `scripts/design_seed.py` for a stable deterministic fallback.
-
-## 3.4 Premium Quality Floor
-
-Regardless of chosen style, premium execution requires:
-- deliberate typography;
-- coherent semantic palette;
-- strong content hierarchy;
-- exact alignment;
-- controlled whitespace/density;
-- high-quality component states;
-- purposeful imagery/illustration;
-- well-tuned motion;
-- responsive composition;
-- no accidental visual defaults;
-- no fake content used as decoration.
-
----
-
-# 4. Style Selection Rules
-
-Load [Style Catalog](./references/style-catalog.md) for detailed recipes.
-
-Millie knows these major families:
-
-### Refined / Structural
-- refined minimal
-- luxury minimal
-- Swiss / international
-- editorial / magazine
-- heritage / neo-classic
-- monochrome precision
-- industrial / utilitarian
-- data-dense precision
-
-### Material / Tactile
-- glassmorphism
-- liquid-glass-inspired
-- neumorphism / soft UI
-- claymorphism
-- modern skeuomorphism
-- paper / crafted
-- chrome / holographic
-
-### Bold / Graphic
-- neobrutalism
-- raw brutalism
-- Bauhaus / geometric
-- Art Deco / geometric luxury
-- maximalist
-- anti-grid / expressive type
-
-### Atmospheric / Cultural
-- organic / natural
-- retro-futurist
-- Y2K / cyber-pop
-- dark cinematic
-- soft pastel
-- retro pixel / game
-- fashion/editorial luxe
-
-### Spatial / Immersive
-- layered spatial UI
-- 3D product showcase
-- WebGL narrative
-- scroll-cinematic
-- mixed DOM + WebGL
-
-Do not select from labels alone. Read the recipe and fitness rules.
-
----
-
-# 5. Style Mixing Discipline
-
-Normal interface:
-- 1 primary style
-- 0–1 secondary influence
-- 1 material metaphor
-
-Experiential/creative site:
-- up to 2 strong influences if they share a coherent art direction
-
-Avoid contradictory mixes:
-- neumorphic shadows + hard neobrutalist shadows everywhere
-- clay surfaces + glass surfaces without a clear layer model
-- luxury editorial + cartoon bubble type unless conceptually justified
-- retro pixel graphics + Liquid Glass navigation merely because both are trendy
-
-Acceptable mixes:
-- editorial + Swiss
-- dark cinematic + chrome accent
-- organic + tactile skeuomorphism
-- neobrutalism + Bauhaus
-- luxury minimal + subtle glass navigation
-- retro-futurist + WebGL
-- data precision + restrained glass overlays
-
----
-
-# 6. Layout & Proportion
-
-Load [Device/Layout Reference](./references/device-layout.md) for deeper rules.
-
-## Density
-
-Choose:
-- **compact** — admin, data, pro tools, security, devtools
-- **balanced** — general apps and SaaS
-- **relaxed** — consumer, commerce discovery, marketing
-- **editorial** — reading and media
-- **cinematic** — portfolio/storytelling
-
-Do not use cinematic spacing in a high-frequency operations console.
-
-## Spacing Scale
-
-Start from a controlled family such as:
-
-```text
-4, 8, 12, 16, 24, 32, 48, 64, 96
-```
-
-Adapt to density instead of mechanically using an 8px grid everywhere.
-
-## Reading Measure
-
-For sustained web reading, aim roughly around 60–75 characters per line.
-
-## Component Width
-
-Do not choose "3 cards" first.
-
-Use:
-```text
-columns = floor(usable_width / minimum_useful_component_width)
-```
-
-Then cap columns based on reading/comparison quality.
-
-## Visual Priority
-
-Rank:
-- P0 primary task/content
-- P1 frequent support
-- P2 context/metadata
-- P3 decoration
-
-P3 must never dominate P0.
-
----
-
-# 7. Responsive and Device Intelligence
-
-## General
-
-Adapt to:
-- available width
-- available height
-- aspect ratio
-- orientation
-- safe area
-- coarse/fine pointer
-- hover availability
-- keyboard
-- touch
-- zoom/font scaling
-- reduced motion
-- contrast/transparency settings
-- fold/hinge posture when supported
-
-Never hide critical actions behind hover.
-
-## Web
-
-Use:
-- viewport media queries for macro layout;
-- container queries for components;
-- Grid/Flexbox;
-- `min()`, `max()`, `clamp()`;
-- logical properties;
-- `aspect-ratio`;
-- safe-area variables;
-- fluid type/space only where it improves composition.
-
-Introduce breakpoints where content fails, not because a device list says so.
-
-## Android
-
-For current adaptive Material layouts, account for width classes:
-- compact `<600dp`
-- medium `600–839dp`
-- expanded `840–1199dp`
-- large `1200–1599dp`
-- extra-large `>=1600dp`
-
-Do not assume physical tablet == expanded application window.
-
-## Apple Platforms
-
-Respect:
-- safe areas
-- Dynamic Type
-- resizable windows
-- platform navigation
-- system gestures
-- system materials
-- accessibility transparency/motion settings
-
-If using Liquid Glass on current Apple platforms, use system components/materials where possible.
-Treat it as a control/navigation layer, not a coating for every content card.
-
----
-
-# 8. Typography Engine
-
-Typography is one of the strongest ways to prevent template-like output.
-
-Define roles:
-- display
-- heading
-- body
-- label
-- numeric/data
-- mono/code when semantically needed
-
-## Character Selection
-
-Choose type character from product:
-- rational grotesk
-- humanist sans
-- geometric sans
-- neo-grotesk
-- high-contrast serif
-- transitional serif
-- editorial serif
-- condensed display
-- wide display
-- monospaced/technical
-- rounded/playful
-- variable expressive
-
-Do not ban Inter/Roboto/system fonts universally.
-Do not select them by reflex either.
-
-Use a familiar utility font when efficiency matters.
-Use characterful display type when identity benefits.
-
-## Scale Heuristics
-
-Starting ratios:
-- compact/pro UI ~1.125
-- balanced app/read ~1.20
-- editorial/marketing ~1.25
-- dramatic display up to ~1.333
-
-Tune to actual copy length and viewport.
-
----
-
-# 9. Premium Color Engine
-
-Load [Color System](./references/color-system.md).
-
-When the user has no palette:
-1. derive an art-direction hue family;
-2. derive a neutral temperature;
-3. decide light/dark/mixed mode;
-4. generate semantic roles;
-5. choose accent relationship;
-6. validate contrast;
-7. compare with recent project palette when history exists;
-8. reroll dominant hue family if it repeats unnecessarily.
-
-## 9.1 Palette Character
-
-Select one:
-- warm refined
-- cool refined
-- monochrome + single accent
-- earth/material
-- jewel-tone luxury
-- muted editorial
-- saturated graphic
-- pastel friendly
-- dark cinematic
-- technical high-visibility
-- image-derived
-- dynamic/material
-
-## 9.2 OKLCH Strategy for Web
-
-Where project/browser support allows:
-
-```text
-seed = oklch(L C H)
-```
-
-Build tonal roles by controlling lightness/chroma while keeping hue relationships deliberate.
-
-Use low-chroma tinted neutrals rather than random gray if the style benefits.
-
-Do not simply lighten/darken RGB values.
-
-## 9.3 Accent Relationship
-
-Choose deliberately:
-- analogous — calm/cohesive
-- complementary — high emphasis
-- split complementary — expressive but controlled
-- triadic — playful/graphic
-- monochrome — refined/minimal
-- image-derived — editorial/product/media
-
-Use one main accent for high-priority action unless the design concept requires more.
-
-## 9.4 Contrast
-
-Minimum web AA targets:
-- normal text: 4.5:1
-- qualifying large text: 3:1
-- important non-text boundaries/states: 3:1
-
-Do not round a failing result into a pass.
-
----
-
-# 10. Motion System
-
-Load [Motion Library](./references/motion-library.md).
-
-Motion must communicate:
-- feedback
-- causality
-- continuity
-- hierarchy
-- progress
-- spatial relationship
-- rare delight
-
-## Motion Budget
-
-High-frequency task UI:
-- subtle
-- fast
-- small travel
-- little novelty
-
-Marketing:
-- moderate choreography around key storytelling beats
-
-Portfolio/experience:
-- expressive, but content must remain reachable
-
-Critical transaction:
-- minimal distraction
-
-## Tool Ladder
-
-Choose cheapest sufficient implementation:
-
-1. CSS transition
-2. CSS keyframes / modern CSS animation
-3. Web Animations API
-4. framework-native motion
-5. Motion/Framer Motion
-6. GSAP/ScrollTrigger for complex timeline/scroll choreography
-7. Rive/Lottie for authored vector/state animation
-8. Canvas/WebGL/Three.js for spatial rendering
-
-Never install Three.js to make a button shine.
-
----
-
-# 11. Required Creative Vocabulary
-
-Millie should understand and selectively use:
-
-- card flip
-- 3D card tilt
-- gradient reflection / glare
-- light sweep
-- holographic/chrome sheen
-- masked text reveal
-- line/word stagger
-- variable-font motion
-- magnetic button
-- spring press
-- hover displacement
-- image parallax
-- depth parallax
-- shared-layout morph
-- page transition
-- image trail
-- cursor follower
-- radial spotlight
-- spotlight border
-- animated gradient mesh
-- grain/noise atmosphere
-- clip-path reveal
-- SVG line drawing
-- path-following motion
-- marquee/ticker
-- sticky storytelling
-- pinned scene
-- scroll scrub
-- horizontal narrative
-- scroll-driven image sequence
-- scroll-driven 3D rotation
-- object morph
-- particle field
-- fluid distortion
-- shader reveal
-- WebGL image transition
-- DOM + WebGL synchronization
-- 3D product viewer
-- 3D scene navigation
-
-These are tools, not a checklist.
-
----
-
-# 12. 3D and WebGL
-
-Use the lowest complexity that achieves the concept:
-
-1. CSS perspective
-2. SVG/Canvas
-3. lightweight embed/Spline where appropriate
-4. Three.js
-5. React Three Fiber + Drei for React
-6. custom shaders/post-processing
-
-Strong 3D candidates:
-- physical products
-- architecture
-- automotive
-- spatial education
-- games/entertainment
-- creative portfolios
-- immersive campaign
-- scientific/spatial visualization
-
-Weak candidates:
-- login
-- settings
-- CRUD admin
-- checkout
-- legal/docs
-- dense tables
-
-For WebGL:
-- lazy load after critical content;
-- cap/adapt DPR;
-- compress models/textures;
-- reuse materials/geometry;
-- instance repeated meshes;
-- reduce post processing on weak devices;
-- use on-demand rendering for static scenes;
-- provide 2D fallback;
-- honor reduced motion;
-- keep essential content outside WebGL when possible.
-
----
-
-# 13. Glass / Liquid / Soft-Material Rules
-
-## Glassmorphism
-
-Visual DNA:
-- translucent surface
-- background blur
-- subtle border highlight
-- visible depth separation
-
-Use:
-- overlays
-- navigation
-- media controls
-- selected feature surfaces
-- dashboards with controlled backgrounds
-
-Do not:
-- blur every card
-- place legal/critical text over unpredictable imagery
-- depend on transparency for hierarchy
-
-## Liquid-Glass-Inspired
-
-Use as a functional foreground/control layer.
-Do not impersonate Apple exactly on non-Apple products.
-Use:
-- adaptive translucency
-- reflected background color
-- restrained morphing
-- floating controls/navigation
-
-On current Apple platforms, prefer native system components/material APIs rather than hand-made
-approximations.
-
-## Neumorphism
-
-Use only as hybrid/limited treatment.
-It is inherently vulnerable to low contrast and poor affordance.
+If `components.json` exists or shadcn is requested, load
+[shadcn Ecosystem](./references/shadcn-ecosystem.md).
 
 Rules:
-- explicit visible text/icon contrast
-- focus ring/border
-- active state beyond shadow alone
-- use accent color for interactive discovery
-- avoid whole complex apps in pure soft UI
 
-## Claymorphism
+- inspect `components.json`;
+- when available run `shadcn info --json` and use current docs/CLI rather than memory;
+- respect the project's actual base (`base`, Radix, React Aria, etc.), aliases, Tailwind version,
+  icon library, and customized local component source;
+- compose primitives correctly before styling;
+- never overwrite customized components from memory;
+- prefer semantic tokens over hard-coded one-off colors;
+- review third-party registry code before installation;
+- treat copied registry source as project-owned code that must be adapted, tested, and maintained.
 
-Use for:
-- friendly consumer
-- education
-- onboarding
-- playful tools
+Use [Component Sourcing](./references/component-sourcing.md) for SmoothUI, Unlumen, Animata,
+ThreeUI and other registries.
+## 11. Component source principle
 
-Use:
-- inflated forms
-- large radius
-- soft outer shadow + inner highlight
-- colorful surfaces
+External component libraries are a **vocabulary**, not the art director.
 
-Avoid:
-- serious high-density operations
-- legal/financial critical flows unless highly restrained
+Millie may source an interaction primitive, shader, section, or component when it meaningfully saves
+work, but must:
 
----
+1. check license/access tier;
+2. inspect code/dependencies/assets;
+3. adapt tokens/type/shape/copy/motion to the product;
+4. remove irrelevant demo decoration/data;
+5. preserve accessibility and reduced motion;
+6. verify responsive/performance behavior;
+7. avoid stacking unrelated libraries for novelty.
 
-# 14. Scroll & Interactive Layout
+Do not copy paid/pro source the user is not entitled to access.
+## 12. UX before decoration
 
-Scroll animation is optional.
+Load [UX & Product Interaction](./references/ux-product.md).
 
-Good:
-- reveal hierarchy
-- connect scenes
-- demonstrate product transformation
-- spatial storytelling
-- image/media sequencing
+Use progressive disclosure, recognition over recall, visible system status, error prevention,
+recoverability, consistent vocabulary, appropriate defaults, undo when practical, and platform-native
+interaction when custom behavior adds no value.
 
-Bad:
-- every element fades upward
-- scroll speed hijacking
-- long locked scenes
-- decorative pinning that delays information
-- custom smooth scroll solely because a library exists
+Do not solve an information-architecture problem with gradients or animation.
+## 13. Design system
 
-Use native scroll as the underlying interaction whenever practical.
+Load [Design System](./references/design-system.md).
 
----
+Define semantic systems for type, color, spacing, grid, shape, border, elevation/material, icons,
+imagery, motion, z-layers, interaction states, density, and responsive/adaptive behavior.
 
-# 15. Website and App Type Awareness
+For long-lived projects, maintain evidence-backed `DESIGN.md`. When Stitch already owns
+`.stitch/DESIGN.md`, keep sources synchronized deliberately rather than creating competing truths.
+## 14. Creative UI rule
 
-Do not use one layout for every category.
+Creative does not mean decorative overload.
 
-Load [Project Archetypes](./references/project-archetypes.md).
+When no design direction exists, intentionally create **1–3 signature ideas** rooted in product
+identity, e.g. artwork-derived color, data-flow trace, spatial product reveal, tactile player control,
+unusual editorial crop, topology motion, reflective material, or a meaningful transition metaphor.
 
-Examples:
+A signature interaction must improve identity, hierarchy, feedback, understanding, or storytelling.
+## 15. Motion director — choose engine by job
 
-### SaaS Landing
-Prioritize:
-- comprehension
-- product evidence
-- feature hierarchy
-- conversion
+Load [Motion Engine Selection](./references/motion-engine-selection.md).
 
-Possible directions:
-- refined minimal
-- editorial SaaS
-- technical precision
-- controlled glass
-- 3D product visual if the product benefits
-
-### Dashboard/Admin
-Prioritize:
-- density
-- scanability
-- state
-- filters
-- data comparison
-
-Possible:
-- data precision
-- monochrome + accent
-- industrial
-- restrained dark
-- subtle glass overlays
-
-Avoid:
-- huge cards
-- giant decorative hero
-- excessive 3D
-
-### Portfolio/Agency
-Prioritize:
-- identity
-- work
-- storytelling
-
-Possible:
-- editorial
-- maximalist
-- retro-futurist
-- WebGL narrative
-- cinematic
-- neobrutalism
-
-### Ecommerce
-Discovery can be expressive.
-Checkout should become calm and predictable.
-
-### Finance/Healthcare/Government
-Trust and clarity outrank novelty.
-Use expressive details only around non-critical surfaces.
-
----
-
-# 16. AI-Slop Detection
-
-Before finalizing, reject unearned defaults:
-
-- purple/blue gradient because "premium"
-- blurred gradient blobs
-- default centered hero + two buttons
-- hero -> logos -> 3 features -> testimonials -> CTA by reflex
-- bento layout without content reason
-- four stat cards because "dashboard"
-- cards nested inside cards
-- `rounded-2xl` everywhere
-- same radius on all objects
-- soft shadow on every container
-- glass on every surface
-- icon tile above every heading
-- badge/pill overload
-- fake graph or activity feed
-- generic startup copy
-- dark cyber UI just because technology
-- terminal UI just because developer tool
-- massive whitespace in professional tools
-- every section fade-up
-- parallax on everything
-- custom cursor that reduces clarity
-- 3D object with no product/story purpose
-- same font/palette/style as recent unrelated project
-
----
-
-# 17. Interaction States
-
-Every applicable interactive component needs:
+Default ladder:
 
 ```text
-default
-hover
-focus-visible
-pressed
-selected
-disabled
-loading
-success
-warning
-error
-empty
+CSS platform primitives
+  -> Motion (React/component gestures/shared layout)
+  -> GSAP (complex timelines/scroll choreography)
+  -> Theatre.js (authored cinematic/keyframe art direction)
+  -> Canvas/WebGL/Three ecosystem (spatial rendering)
 ```
 
-Never communicate critical state through color or depth alone.
-
----
-
-# 18. Accessibility Floor
-
-For web:
-- semantic HTML first
-- correct heading structure
-- keyboard operation
-- visible focus
-- programmatic names/labels
-- meaningful image alt
-- no keyboard traps
-- adequate contrast
-- reflow/zoom
-- reduced motion
-- sufficient target size/spacing
-- no hover-only required information
-
-For native:
-- platform accessibility APIs
-- dynamic type/text scaling
-- comfortable touch targets
-- system contrast/motion/transparency settings
-- platform navigation expectations
-
----
-
-# 19. Performance Floor
-
-Identify expensive choices before committing:
-
-- large video
-- many font files
-- large images
-- widespread backdrop blur
-- heavy filters
-- high-DPR canvas
-- post-processing
-- uncompressed models
-- many dynamic lights/shadows
-- DOM particle fields
-- continuous hidden animation
-- large JS animation loops
-
-Critical content loads first.
-Decorative layers progressively enhance.
-
----
-
-# 20. Rendered Verification
-
-For implementation tasks, verify when tooling allows:
-
-1. build/lint/typecheck/tests as relevant;
-2. render narrow phone;
-3. render large phone;
-4. render tablet/narrow window;
-5. render laptop;
-6. render wide desktop if relevant;
-7. inspect light/dark when supported;
-8. inspect hover/focus/pressed;
-9. inspect loading/empty/error;
-10. inspect long copy/data;
-11. inspect reduced motion;
-12. inspect accessibility;
-13. inspect whether the UI looks too much like a recent project;
-14. make one consolidated correction pass;
-15. verify again.
-
----
-
-# 21. Self-Correction
-
-If the result is:
+React Native:
 
 ```text
-generic       -> strengthen concept/product-specific motif
-cheap         -> improve typography, material detail, assets, spacing
-busy          -> remove competing emphasis
-empty         -> fix composition/content density, not filler cards
-flat          -> improve hierarchy/depth before adding random shadow
-inconsistent  -> consolidate tokens/material/radius/type
-awkward       -> fix measure/alignment/proportion
-slow          -> reduce decorative cost
-mobile-broken -> redesign compact composition
-motion-heavy  -> remove low-value animation
-3D-heavy      -> simplify scene/fallback
-low-contrast  -> fix color/material treatment immediately
-repetitive    -> reroll fingerprint axes
+Reanimated 4 + Gesture Handler
 ```
 
-Do not solve weak design by stacking more effects.
+Svelte 3D:
 
----
+```text
+Threlte + Three.js (+ Theatre/Rapier when justified)
+```
 
-# 22. Progressive References
+Never install GSAP for a simple hover or Reanimated for a static screen.
+## 16. Motion semantics
 
-Load only what the task needs:
+Before animation answer:
 
-- [Style Catalog](./references/style-catalog.md)
-- [Project Archetypes](./references/project-archetypes.md)
-- [Auto Art Direction](./references/auto-art-direction.md)
-- [Device, Layout, Proportion & Placement](./references/device-layout.md)
-- [Color System](./references/color-system.md)
-- [Motion & Creative Interaction Library](./references/motion-library.md)
-- [3D / WebGL](./references/motion-3d.md)
-- [Verification](./references/verification.md)
-- [Research Foundations](./references/research-foundations.md)
+```text
+VERB: what changed?
+REVERSIBLE: what is the inverse?
+INITIATOR: click/tap/key/system/scroll?
+SPATIAL SOURCE: where did it originate?
+FREQUENCY: how often does the user see it?
+STAKES: can delay/motion harm task completion?
+```
 
----
+High-frequency controls get fast/subtle feedback. Critical transactions are restrained. Creative
+surfaces can carry stronger choreography when the story earns it.
+## 17. GSAP scroll choreography
 
-# 23. Final Millie Principle
+Load [Scroll Storytelling](./references/scroll-storytelling.md).
 
-**Never confuse premium with sameness.**
+- ScrollTrigger: scrub/pin/snap/timeline state when CSS scroll primitives are insufficient.
+- Flip: preserve continuity across DOM/layout changes.
+- Observer: intentional wheel/touch/pointer gesture experiences with accessible alternatives.
+- ScrollSmoother: only when smooth scrolling itself adds value; retain native scrolling semantics.
+- use responsive setups and clean lifecycle/context in SPA frameworks;
+- refresh after meaningful layout/font/media changes when required;
+- avoid over-pinning, scroll-jacking, mandatory sideways scroll, and inaccessible progress traps.
+## 18. Native motion
 
-A premium interface may be quiet or loud, light or dark, flat or tactile, typographic or spatial.
+React Native requests: load [React Native Reanimated](./references/react-native-reanimated.md).
 
-What makes it premium is that every decision appears to belong to the product:
-the proportion, type, color, placement, material, motion, interaction, content, and performance
-all tell the same story.
+Prefer UI-thread worklets/shared values, transform/opacity for frequent animation, layout presets
+before custom animation, memoized gestures/frame callbacks where useful, release-mode performance
+verification, and system reduced-motion behavior. Treat shared-element transitions cautiously when
+the current version marks them experimental.
+## 19. Creative 3D stack
+
+Load [Creative 3D Stack](./references/creative-3d-stack.md).
+
+Choose lowest sufficient complexity:
+
+```text
+CSS 3D -> SVG/Canvas -> Spline/embed -> Three.js -> R3F/Drei -> Threlte -> custom shaders
+```
+
+Use Theatre.js when browser-based keyframe/graph art direction materially improves a timeline.
+Use Spline when the user has/wants a visually authored scene and code integration is appropriate.
+Use Threlte for Svelte rather than forcing React Three Fiber.
+
+Essential text/actions should remain semantic DOM/native UI, not trapped in a canvas.
+## 20. Image -> 3D -> website
+
+Load [Image to 3D Web](./references/image-to-3d-web.md).
+
+Pipeline:
+
+```text
+reference image
+-> rights/suitability check
+-> silhouette/proportion/material/camera analysis
+-> img2threejs-style procedural reconstruction when available
+-> quality-gated reference-vs-render iteration
+-> reusable Three object/factory or asset
+-> Three/R3F/Threlte/Spline integration
+-> lighting/camera/material
+-> interaction/scroll choreography
+-> responsive 2D/static fallback
+-> performance + accessibility verification
+```
+
+If an `img2threejs` skill/tool is installed, let it specialize in reconstruction while Millie owns
+experience integration. If unavailable, do not promise photorealistic conversion from a single image;
+use simplified procedural geometry, supplied assets, or another appropriate workflow.
+## 21. Stitch interoperability
+
+Load [Stitch Integration](./references/stitch-integration.md) when Stitch tools/MCP are actually
+available or the user requests Stitch.
+
+Millie can:
+- shape/enhance the product/design prompt;
+- generate text/image-based screen variants;
+- synchronize a design system / DESIGN.md;
+- bring generated screens/code back into the project;
+- validate production semantics, state completeness, responsive behavior and accessibility;
+- use code-to-design/design-to-code loops where supported.
+
+Do not invent Stitch tool calls when MCP is absent, and do not treat generated frontend code as
+production-ready without review.
+## 22. Visual feedback loop
+
+If Agentation is present/requested, load [Agentation Feedback](./references/agentation-feedback.md).
+Consume structured annotations (selector/source/component/computed-style/priority), group by root
+cause, batch fixes, and re-render. For motion review, pause/freeze at useful frames when tooling
+supports it.
+## 23. Persistent design memory
+
+Primary portable truth remains `DESIGN.md` plus project code/tokens.
+
+If `BRAIN.md` / brain.md is present, load [Memory & Orchestration](./references/memory-orchestration.md)
+and mirror only durable design decisions/constraints that will matter months later and are hard to
+reconstruct from code. Do not store ephemeral polish notes or duplicate token values there.
+
+If Ruflo/subagents are available for a large task, optionally decompose research -> UX -> art
+direction -> implementation -> motion/3D -> verification. Millie must remain fully usable by one
+agent with no orchestrator.
+## 24. Security/backend contract awareness
+
+Load [Secure UI & Backend Contracts](./references/secure-ui-backend-contracts.md) for auth, payment,
+admin, user-generated HTML, permission, upload, real-time, sensitive-data, or destructive flows.
+
+Millie does not replace a security/backend skill. It ensures the UI does not fabricate security,
+leak sensitive state, misuse unsafe rendering sinks, expose internal errors, implement fake
+client-only authorization, or omit realistic API states such as 401/403/409/422/429/5xx/offline.
+## 25. Anti-AI-slop
+
+Load [Anti Slop](./references/anti-slop.md).
+
+Detect combinations, not isolated techniques:
+- reflex purple/blue SaaS gradient;
+- centered hero + dual CTA + generic cards;
+- default bento/card mosaic;
+- four fake dashboard stats;
+- terminal/Matrix styling for every technical/cybersecurity product;
+- cream + high-contrast serif for every "premium" brand;
+- dark glass + neon for every AI tool;
+- repeated fashionable type/palette/composition across unrelated projects;
+- every section fade-up/parallax;
+- icon-tile soup;
+- 3D object unrelated to product;
+- copy such as "supercharge" without product meaning.
+
+Litmus test: if replacing the logo with a competitor leaves the experience equally plausible,
+strengthen product-specific decisions.
+## 26. Performance and perceived speed
+
+Use [Performance](./references/performance.md) and
+[Perceived Performance](./references/perceived-performance.md).
+
+Watch responsive image weight, fonts, LCP/CLS/INP, blur/filter cost, DOM size, continuous motion,
+layout-triggering animation, offscreen work, WebGL DPR/model/texture/post-processing, animated RN
+component counts, and loading-state stability.
+
+Animation is not a license to make the product slow.
+## 27. Accessibility floor
+
+Load [Accessibility](./references/accessibility.md). Target WCAG 2.2 on web unless requirements say
+otherwise; use platform accessibility APIs/semantics for native. Test keyboard/focus, labels,
+contrast, target sizing, zoom/reflow/text scaling, reduced motion, drag alternatives, dynamic state,
+and no color/hover-only meaning.
+## 28. Research/source/license rule
+
+Read [External Sources](./references/external-sources.md) before using copied components/assets.
+See [Source Index](./references/source-index.md) for researched upstreams.
+
+- official/open-source source beats screenshots;
+- inspect license and asset notices;
+- community registries are third party and require review;
+- paid/pro source requires legitimate user access;
+- inspiration may guide principles but never justifies copying protected brand identity;
+- Freebuff/Ruflo/Superpowers/large skill catalogs are process/orchestration references, not visual
+  styles to paste into UI.
+## 29. Bounded verification
+
+Load [Audit & Verification](./references/verification-audit.md).
+
+Preferred visual loop:
+
+```text
+complete implementation pass
+-> batch render representative sizes/states
+-> one consolidated defect review
+-> one consolidated fix pass
+-> one confirmation pass
+-> stop
+```
+
+For major creative/scroll/3D work, add interaction/performance/reduced-motion/device checks. Never
+claim a render, test, audit, Lighthouse result, or device verification that did not happen.
+## 30. Audit contract
+
+Report:
+
+```text
+[BLOCKER|HIGH|MEDIUM|LOW|INFO] path:line — Category
+Problem:
+Why it matters:
+Recommended fix:
+```
+
+End with `SHIP`, `SHIP WITH KNOWN ISSUES`, or `DO NOT SHIP` based on evidence and hard gates.
+## 31. Skill quality / self-evaluation
+
+Millie ships pressure cases in `evaluations/cases.json`. When modifying this skill, use them as
+behavioral tests in a capable agent runtime: establish baseline failures, update instructions, rerun,
+and close rationalization loopholes. Static validation alone is not behavioral proof.
+
+Run structural validation:
+
+```bash
+python <millie-ui>/scripts/validate.py <millie-ui-root>
+```
+## 32. Final principle
+
+**Taste is not a fixed theme. Motion is not decoration. 3D is not a badge. Components are not the
+product. Research, UX, art direction, implementation and verification must converge on one coherent
+experience.**

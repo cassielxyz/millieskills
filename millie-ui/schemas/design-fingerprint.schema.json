@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Millie UI Design Fingerprint",
+  "type": "object",
+  "required": [
+    "style",
+    "composition",
+    "type_character",
+    "palette",
+    "material",
+    "motion",
+    "signature"
+  ],
+  "properties": {
+    "style": {
+      "type": "string"
+    },
+    "composition": {
+      "type": "string"
+    },
+    "type_character": {
+      "type": "string"
+    },
+    "palette": {
+      "type": "string"
+    },
+    "material": {
+      "type": "string"
+    },
+    "motion": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "string"
+    },
+    "density": {
+      "type": [
+        "integer",
+        "number"
+      ],
+      "minimum": 1,
+      "maximum": 10
+    },
+    "immersion": {
+      "type": [
+        "integer",
+        "number"
+      ],
+      "minimum": 1,
+      "maximum": 10
+    },
+    "identity_hash": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

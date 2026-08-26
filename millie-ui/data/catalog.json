@@ -1,0 +1,1960 @@
+{
+  "schema_version": 1,
+  "styles": [
+    {
+      "id": "refined-minimal",
+      "tags": [
+        "saas",
+        "b2b",
+        "finance",
+        "productivity"
+      ],
+      "traits": [
+        "precise",
+        "quiet",
+        "type-led"
+      ],
+      "risk": "generic emptiness"
+    },
+    {
+      "id": "editorial",
+      "tags": [
+        "portfolio",
+        "fashion",
+        "publication",
+        "story"
+      ],
+      "traits": [
+        "type-led",
+        "image-led",
+        "rhythm"
+      ],
+      "risk": "display over readability"
+    },
+    {
+      "id": "swiss",
+      "tags": [
+        "architecture",
+        "culture",
+        "b2b"
+      ],
+      "traits": [
+        "grid",
+        "asymmetry",
+        "typographic hierarchy"
+      ],
+      "risk": "corporate sameness"
+    },
+    {
+      "id": "data-precision",
+      "tags": [
+        "soc",
+        "noc",
+        "analytics",
+        "finance",
+        "ops"
+      ],
+      "traits": [
+        "dense",
+        "status-first",
+        "tabular"
+      ],
+      "risk": "card mosaic"
+    },
+    {
+      "id": "industrial",
+      "tags": [
+        "infrastructure",
+        "logistics",
+        "cybersecurity"
+      ],
+      "traits": [
+        "utilitarian",
+        "rules",
+        "technical"
+      ],
+      "risk": "fake terminal aesthetic"
+    },
+    {
+      "id": "luxury-minimal",
+      "tags": [
+        "fashion",
+        "hospitality",
+        "automotive"
+      ],
+      "traits": [
+        "image-led",
+        "restrained",
+        "material"
+      ],
+      "risk": "beige-gold cliche"
+    },
+    {
+      "id": "organic",
+      "tags": [
+        "food",
+        "wellness",
+        "travel",
+        "sustainability"
+      ],
+      "traits": [
+        "human",
+        "natural",
+        "soft geometry"
+      ],
+      "risk": "greenwashing visual cliche"
+    },
+    {
+      "id": "neobrutal",
+      "tags": [
+        "education",
+        "creative",
+        "campaign"
+      ],
+      "traits": [
+        "hard border",
+        "block color",
+        "graphic"
+      ],
+      "risk": "trust mismatch"
+    },
+    {
+      "id": "dark-cinematic",
+      "tags": [
+        "media",
+        "gaming",
+        "automotive",
+        "luxury"
+      ],
+      "traits": [
+        "image light",
+        "near-black",
+        "focal"
+      ],
+      "risk": "neon-tech cliche"
+    },
+    {
+      "id": "retro-future",
+      "tags": [
+        "music",
+        "creative-tech",
+        "portfolio"
+      ],
+      "traits": [
+        "historic-future",
+        "display",
+        "spatial"
+      ],
+      "risk": "noise"
+    },
+    {
+      "id": "tactile",
+      "tags": [
+        "music",
+        "controls",
+        "consumer"
+      ],
+      "traits": [
+        "physical feedback",
+        "depth",
+        "material"
+      ],
+      "risk": "affordance ambiguity"
+    },
+    {
+      "id": "layered-spatial",
+      "tags": [
+        "maps",
+        "media",
+        "product",
+        "creative"
+      ],
+      "traits": [
+        "depth",
+        "foreground-controls",
+        "perspective"
+      ],
+      "risk": "readability"
+    },
+    {
+      "id": "webgl-narrative",
+      "tags": [
+        "launch",
+        "portfolio",
+        "storytelling",
+        "product-showcase"
+      ],
+      "traits": [
+        "3d",
+        "scroll",
+        "scene"
+      ],
+      "risk": "performance/accessibility"
+    },
+    {
+      "id": "fashion-editorial",
+      "tags": [
+        "fashion",
+        "beauty",
+        "photography"
+      ],
+      "traits": [
+        "dramatic type",
+        "sparse chrome",
+        "art-directed crop"
+      ],
+      "risk": "navigation hidden"
+    },
+    {
+      "id": "glass-selective",
+      "tags": [
+        "media",
+        "maps",
+        "overlay",
+        "navigation"
+      ],
+      "traits": [
+        "translucency",
+        "layer",
+        "edge-highlight"
+      ],
+      "risk": "blur everywhere"
+    },
+    {
+      "id": "liquid-glass-inspired",
+      "tags": [
+        "apple",
+        "native",
+        "media",
+        "controls"
+      ],
+      "traits": [
+        "adaptive-translucency",
+        "foreground-layer",
+        "morph"
+      ],
+      "risk": "content coating"
+    },
+    {
+      "id": "soft-ui-hybrid",
+      "tags": [
+        "wellness",
+        "audio",
+        "controls"
+      ],
+      "traits": [
+        "soft-depth",
+        "inset-state",
+        "explicit-boundary"
+      ],
+      "risk": "low affordance"
+    },
+    {
+      "id": "clay",
+      "tags": [
+        "education",
+        "consumer",
+        "onboarding"
+      ],
+      "traits": [
+        "puffy",
+        "friendly",
+        "soft-shadow"
+      ],
+      "risk": "childish mismatch"
+    },
+    {
+      "id": "modern-skeuomorphic",
+      "tags": [
+        "audio",
+        "camera",
+        "automotive",
+        "creative-tool"
+      ],
+      "traits": [
+        "physical-metaphor",
+        "tactile",
+        "material"
+      ],
+      "risk": "gratuitous realism"
+    },
+    {
+      "id": "paper-crafted",
+      "tags": [
+        "editorial",
+        "food",
+        "culture",
+        "heritage"
+      ],
+      "traits": [
+        "print",
+        "texture",
+        "layered"
+      ],
+      "risk": "texture legibility"
+    },
+    {
+      "id": "chrome-holographic",
+      "tags": [
+        "fashion",
+        "music",
+        "gaming",
+        "launch"
+      ],
+      "traits": [
+        "spectral",
+        "metallic",
+        "reactive-light"
+      ],
+      "risk": "text instability"
+    },
+    {
+      "id": "raw-brutalist",
+      "tags": [
+        "art",
+        "culture",
+        "experimental"
+      ],
+      "traits": [
+        "stark",
+        "exposed-structure",
+        "rough"
+      ],
+      "risk": "broken-looking ux"
+    },
+    {
+      "id": "bauhaus",
+      "tags": [
+        "event",
+        "architecture",
+        "design"
+      ],
+      "traits": [
+        "geometry",
+        "primary-structure",
+        "bold-composition"
+      ],
+      "risk": "detached decoration"
+    },
+    {
+      "id": "art-deco",
+      "tags": [
+        "hospitality",
+        "heritage",
+        "luxury",
+        "event"
+      ],
+      "traits": [
+        "geometric-frame",
+        "symmetry",
+        "fine-detail"
+      ],
+      "risk": "fake metallic luxury"
+    },
+    {
+      "id": "maximalist",
+      "tags": [
+        "fashion",
+        "music",
+        "entertainment",
+        "campaign"
+      ],
+      "traits": [
+        "layered",
+        "high-contrast",
+        "art-directed"
+      ],
+      "risk": "competing hierarchy"
+    },
+    {
+      "id": "anti-grid",
+      "tags": [
+        "portfolio",
+        "fashion",
+        "campaign"
+      ],
+      "traits": [
+        "overlap",
+        "off-axis",
+        "hidden-grid"
+      ],
+      "risk": "mobile collapse"
+    },
+    {
+      "id": "soft-graphic",
+      "tags": [
+        "education",
+        "wellness",
+        "consumer"
+      ],
+      "traits": [
+        "pastel",
+        "friendly-geometry",
+        "illustrative"
+      ],
+      "risk": "weak state contrast"
+    },
+    {
+      "id": "y2k-cyber-pop",
+      "tags": [
+        "music",
+        "gaming",
+        "youth",
+        "fashion"
+      ],
+      "traits": [
+        "glossy",
+        "metallic",
+        "compact-graphic"
+      ],
+      "risk": "serious-workflow mismatch"
+    },
+    {
+      "id": "pixel-game",
+      "tags": [
+        "game",
+        "community",
+        "portfolio"
+      ],
+      "traits": [
+        "pixel",
+        "limited-palette",
+        "game-state"
+      ],
+      "risk": "tiny targets"
+    },
+    {
+      "id": "heritage",
+      "tags": [
+        "museum",
+        "food",
+        "institution",
+        "hospitality"
+      ],
+      "traits": [
+        "archival",
+        "serif",
+        "crafted-detail"
+      ],
+      "risk": "nostalgia over utility"
+    },
+    {
+      "id": "monochrome-precision",
+      "tags": [
+        "developer",
+        "docs",
+        "pro-saas"
+      ],
+      "traits": [
+        "value-hierarchy",
+        "hairline",
+        "single-accent"
+      ],
+      "risk": "state ambiguity"
+    },
+    {
+      "id": "spatial-gallery",
+      "tags": [
+        "portfolio",
+        "gallery",
+        "museum",
+        "media"
+      ],
+      "traits": [
+        "depth",
+        "scene-navigation",
+        "layered-media"
+      ],
+      "risk": "accessibility/performance"
+    },
+    {
+      "id": "kinetic-typography",
+      "tags": [
+        "campaign",
+        "music",
+        "editorial",
+        "portfolio"
+      ],
+      "traits": [
+        "type-as-motion",
+        "rhythm",
+        "masking"
+      ],
+      "risk": "readability"
+    },
+    {
+      "id": "image-led-cinematic",
+      "tags": [
+        "travel",
+        "automotive",
+        "hospitality",
+        "media"
+      ],
+      "traits": [
+        "full-bleed",
+        "lighting",
+        "story"
+      ],
+      "risk": "action discoverability"
+    },
+    {
+      "id": "diagrammatic",
+      "tags": [
+        "developer",
+        "science",
+        "cybersecurity",
+        "education"
+      ],
+      "traits": [
+        "systems-thinking",
+        "nodes-lines",
+        "annotation"
+      ],
+      "risk": "visual noise"
+    },
+    {
+      "id": "soft-spatial",
+      "tags": [
+        "consumer",
+        "wellness",
+        "media"
+      ],
+      "traits": [
+        "depth",
+        "blur-layers",
+        "gentle-motion"
+      ],
+      "risk": "washy contrast"
+    },
+    {
+      "id": "neo-classic-digital",
+      "tags": [
+        "luxury",
+        "culture",
+        "publishing"
+      ],
+      "traits": [
+        "classic-type",
+        "modern-grid",
+        "restrained-motion"
+      ],
+      "risk": "generic heritage"
+    },
+    {
+      "id": "constructivist",
+      "tags": [
+        "campaign",
+        "culture",
+        "event"
+      ],
+      "traits": [
+        "diagonal",
+        "bold-type",
+        "graphic-tension"
+      ],
+      "risk": "content overwhelm"
+    },
+    {
+      "id": "technical-blueprint",
+      "tags": [
+        "engineering",
+        "architecture",
+        "devtool"
+      ],
+      "traits": [
+        "measurement",
+        "grid-lines",
+        "annotation"
+      ],
+      "risk": "fake engineering aesthetic"
+    },
+    {
+      "id": "ambient-gradient-material",
+      "tags": [
+        "media",
+        "creative",
+        "consumer"
+      ],
+      "traits": [
+        "light-field",
+        "soft-depth",
+        "atmosphere"
+      ],
+      "risk": "gradient-for-gradient-sake"
+    }
+  ],
+  "motion_patterns": [
+    {
+      "id": "tactile-press",
+      "engine": [
+        "css",
+        "motion",
+        "reanimated"
+      ],
+      "best_for": [
+        "button",
+        "control"
+      ],
+      "avoid": [
+        "slow duration"
+      ]
+    },
+    {
+      "id": "shared-layout",
+      "engine": [
+        "motion",
+        "gsap-flip",
+        "reanimated-layout"
+      ],
+      "best_for": [
+        "card-detail",
+        "tabs",
+        "reorder"
+      ],
+      "avoid": [
+        "unrelated objects"
+      ]
+    },
+    {
+      "id": "masked-reveal",
+      "engine": [
+        "css",
+        "motion",
+        "gsap"
+      ],
+      "best_for": [
+        "hero",
+        "editorial"
+      ],
+      "avoid": [
+        "body copy"
+      ]
+    },
+    {
+      "id": "scroll-scrub",
+      "engine": [
+        "css-scroll-timeline",
+        "gsap-scrolltrigger"
+      ],
+      "best_for": [
+        "story",
+        "product assembly"
+      ],
+      "avoid": [
+        "transaction",
+        "docs"
+      ]
+    },
+    {
+      "id": "pinned-story",
+      "engine": [
+        "gsap-scrolltrigger"
+      ],
+      "best_for": [
+        "campaign",
+        "case-study"
+      ],
+      "avoid": [
+        "long ordinary content"
+      ]
+    },
+    {
+      "id": "gesture-drag",
+      "engine": [
+        "motion",
+        "gsap-observer",
+        "reanimated"
+      ],
+      "best_for": [
+        "carousel",
+        "object manipulation"
+      ],
+      "avoid": [
+        "only access path"
+      ]
+    },
+    {
+      "id": "camera-choreo",
+      "engine": [
+        "gsap",
+        "theatre",
+        "three"
+      ],
+      "best_for": [
+        "3d story",
+        "product"
+      ],
+      "avoid": [
+        "settings",
+        "checkout"
+      ]
+    },
+    {
+      "id": "shader-transition",
+      "engine": [
+        "three",
+        "r3f",
+        "threlte"
+      ],
+      "best_for": [
+        "creative media"
+      ],
+      "avoid": [
+        "dense app UI"
+      ]
+    },
+    {
+      "id": "animated-feed",
+      "engine": [
+        "motion",
+        "reanimated"
+      ],
+      "best_for": [
+        "realtime",
+        "social",
+        "monitoring"
+      ],
+      "avoid": [
+        "unbounded simultaneous items"
+      ]
+    },
+    {
+      "id": "hover-glare",
+      "engine": [
+        "css",
+        "motion"
+      ],
+      "best_for": [
+        "premium-card",
+        "product-tile"
+      ],
+      "avoid": [
+        "dense-list",
+        "mobile-only"
+      ]
+    },
+    {
+      "id": "reflection-sweep",
+      "engine": [
+        "css",
+        "motion",
+        "gsap"
+      ],
+      "best_for": [
+        "material",
+        "chrome",
+        "cta-highlight"
+      ],
+      "avoid": [
+        "critical-text-background"
+      ]
+    },
+    {
+      "id": "perspective-tilt",
+      "engine": [
+        "css",
+        "motion",
+        "gsap"
+      ],
+      "best_for": [
+        "portfolio-card",
+        "product-card"
+      ],
+      "avoid": [
+        "high-frequency-grid",
+        "touch-required"
+      ]
+    },
+    {
+      "id": "magnetic-control",
+      "engine": [
+        "motion",
+        "gsap"
+      ],
+      "best_for": [
+        "desktop-cta",
+        "creative-site"
+      ],
+      "avoid": [
+        "critical-form",
+        "touch-primary"
+      ]
+    },
+    {
+      "id": "spring-toggle",
+      "engine": [
+        "motion",
+        "reanimated"
+      ],
+      "best_for": [
+        "toggle",
+        "segmented-control"
+      ],
+      "avoid": [
+        "serious-overbounce"
+      ]
+    },
+    {
+      "id": "hold-progress",
+      "engine": [
+        "css",
+        "motion",
+        "reanimated"
+      ],
+      "best_for": [
+        "destructive-hold",
+        "recording"
+      ],
+      "avoid": [
+        "normal-submit"
+      ]
+    },
+    {
+      "id": "value-interpolation",
+      "engine": [
+        "css",
+        "motion",
+        "reanimated"
+      ],
+      "best_for": [
+        "price",
+        "counter",
+        "telemetry"
+      ],
+      "avoid": [
+        "fake-metrics"
+      ]
+    },
+    {
+      "id": "text-mask-lines",
+      "engine": [
+        "css",
+        "gsap",
+        "motion"
+      ],
+      "best_for": [
+        "editorial-hero",
+        "section-intro"
+      ],
+      "avoid": [
+        "body-paragraph"
+      ]
+    },
+    {
+      "id": "variable-font-axis",
+      "engine": [
+        "css",
+        "motion",
+        "gsap"
+      ],
+      "best_for": [
+        "branding",
+        "headline",
+        "hover"
+      ],
+      "avoid": [
+        "unsupported-font",
+        "body-copy"
+      ]
+    },
+    {
+      "id": "scramble-reveal",
+      "engine": [
+        "js",
+        "gsap"
+      ],
+      "best_for": [
+        "short-tech-label",
+        "campaign"
+      ],
+      "avoid": [
+        "long-copy",
+        "critical-status"
+      ]
+    },
+    {
+      "id": "marquee",
+      "engine": [
+        "css",
+        "gsap"
+      ],
+      "best_for": [
+        "logos",
+        "editorial-ticker",
+        "music"
+      ],
+      "avoid": [
+        "only-content-access"
+      ]
+    },
+    {
+      "id": "svg-path-draw",
+      "engine": [
+        "css",
+        "gsap",
+        "motion"
+      ],
+      "best_for": [
+        "diagram",
+        "signature-line",
+        "map-route"
+      ],
+      "avoid": [
+        "decorative-everywhere"
+      ]
+    },
+    {
+      "id": "spotlight-follow",
+      "engine": [
+        "css",
+        "motion",
+        "gsap"
+      ],
+      "best_for": [
+        "gallery",
+        "developer-tool-accent"
+      ],
+      "avoid": [
+        "low-contrast-text"
+      ]
+    },
+    {
+      "id": "clip-reveal",
+      "engine": [
+        "css",
+        "motion",
+        "gsap"
+      ],
+      "best_for": [
+        "image",
+        "hero",
+        "editorial"
+      ],
+      "avoid": [
+        "frequent-controls"
+      ]
+    },
+    {
+      "id": "page-view-transition",
+      "engine": [
+        "view-transitions",
+        "motion",
+        "gsap"
+      ],
+      "best_for": [
+        "route-change",
+        "gallery-detail"
+      ],
+      "avoid": [
+        "unsupported-without-fallback"
+      ]
+    },
+    {
+      "id": "grid-to-detail",
+      "engine": [
+        "motion-layout",
+        "gsap-flip"
+      ],
+      "best_for": [
+        "gallery",
+        "catalog",
+        "file-browser"
+      ],
+      "avoid": [
+        "unrelated-routes"
+      ]
+    },
+    {
+      "id": "filter-reorder",
+      "engine": [
+        "motion-layout",
+        "gsap-flip"
+      ],
+      "best_for": [
+        "gallery",
+        "table-cards",
+        "search-results"
+      ],
+      "avoid": [
+        "large-unvirtualized-list"
+      ]
+    },
+    {
+      "id": "horizontal-story",
+      "engine": [
+        "css-scroll",
+        "gsap-scrolltrigger"
+      ],
+      "best_for": [
+        "timeline",
+        "visual-story"
+      ],
+      "avoid": [
+        "ordinary-reading"
+      ]
+    },
+    {
+      "id": "image-sequence",
+      "engine": [
+        "canvas",
+        "gsap-scrolltrigger"
+      ],
+      "best_for": [
+        "product-assembly",
+        "cinematic"
+      ],
+      "avoid": [
+        "large-mobile-payload"
+      ]
+    },
+    {
+      "id": "parallax-depth",
+      "engine": [
+        "css-scroll",
+        "gsap-scrolltrigger",
+        "scrollsmoother"
+      ],
+      "best_for": [
+        "hero",
+        "story",
+        "spatial"
+      ],
+      "avoid": [
+        "dense-app",
+        "reduced-motion"
+      ]
+    },
+    {
+      "id": "sticky-media-chapters",
+      "engine": [
+        "css-sticky",
+        "gsap-scrolltrigger"
+      ],
+      "best_for": [
+        "case-study",
+        "product-story"
+      ],
+      "avoid": [
+        "very-long-copy"
+      ]
+    },
+    {
+      "id": "scroll-progress-3d",
+      "engine": [
+        "gsap-scrolltrigger",
+        "three",
+        "r3f",
+        "threlte"
+      ],
+      "best_for": [
+        "product-showcase",
+        "spatial-story"
+      ],
+      "avoid": [
+        "checkout",
+        "settings"
+      ]
+    },
+    {
+      "id": "dom-webgl-sync",
+      "engine": [
+        "gsap",
+        "three",
+        "r3f",
+        "threlte"
+      ],
+      "best_for": [
+        "creative-site",
+        "product-story"
+      ],
+      "avoid": [
+        "semantics-in-canvas"
+      ]
+    },
+    {
+      "id": "shader-image-transition",
+      "engine": [
+        "three",
+        "r3f",
+        "threlte"
+      ],
+      "best_for": [
+        "gallery",
+        "fashion",
+        "media"
+      ],
+      "avoid": [
+        "weak-gpu-without-fallback"
+      ]
+    },
+    {
+      "id": "particle-response",
+      "engine": [
+        "canvas",
+        "three",
+        "r3f",
+        "threlte"
+      ],
+      "best_for": [
+        "music",
+        "campaign",
+        "ambient"
+      ],
+      "avoid": [
+        "primary-action-feedback"
+      ]
+    },
+    {
+      "id": "camera-dolly",
+      "engine": [
+        "theatre",
+        "gsap",
+        "three"
+      ],
+      "best_for": [
+        "3d-product",
+        "narrative"
+      ],
+      "avoid": [
+        "motion-sensitive-no-fallback"
+      ]
+    },
+    {
+      "id": "object-hotspot",
+      "engine": [
+        "three",
+        "r3f",
+        "threlte",
+        "spline"
+      ],
+      "best_for": [
+        "product-explainer",
+        "architecture"
+      ],
+      "avoid": [
+        "tiny-touch-target"
+      ]
+    },
+    {
+      "id": "drag-orbit",
+      "engine": [
+        "three-controls",
+        "r3f",
+        "threlte",
+        "spline"
+      ],
+      "best_for": [
+        "3d-viewer"
+      ],
+      "avoid": [
+        "only-way-to-access-info"
+      ]
+    },
+    {
+      "id": "native-shared-layout",
+      "engine": [
+        "reanimated-layout"
+      ],
+      "best_for": [
+        "native-card-detail",
+        "tab-state"
+      ],
+      "avoid": [
+        "unsupported-shared-element-feature-assumption"
+      ]
+    },
+    {
+      "id": "native-gesture-sheet",
+      "engine": [
+        "reanimated",
+        "gesture-handler"
+      ],
+      "best_for": [
+        "bottom-sheet",
+        "swipe-action"
+      ],
+      "avoid": [
+        "platform-convention-conflict"
+      ]
+    },
+    {
+      "id": "native-scroll-header",
+      "engine": [
+        "reanimated"
+      ],
+      "best_for": [
+        "collapsing-header",
+        "media-detail"
+      ],
+      "avoid": [
+        "too-many-animated-items"
+      ]
+    },
+    {
+      "id": "animated-skeleton",
+      "engine": [
+        "css",
+        "motion",
+        "reanimated"
+      ],
+      "best_for": [
+        "loading"
+      ],
+      "avoid": [
+        "geometry-mismatch",
+        "flicker"
+      ]
+    },
+    {
+      "id": "optimistic-insert",
+      "engine": [
+        "motion",
+        "reanimated"
+      ],
+      "best_for": [
+        "chat",
+        "task",
+        "social"
+      ],
+      "avoid": [
+        "irreversible-action"
+      ]
+    },
+    {
+      "id": "state-morph",
+      "engine": [
+        "motion",
+        "gsap-flip",
+        "reanimated"
+      ],
+      "best_for": [
+        "button-to-success",
+        "control-mode"
+      ],
+      "avoid": [
+        "unrelated-state-change"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "shadcn",
+      "kind": "foundation",
+      "stack": [
+        "react",
+        "tailwind"
+      ],
+      "license": "project/source dependent",
+      "use": "accessible source primitives"
+    },
+    {
+      "id": "smoothui",
+      "kind": "animated-registry",
+      "stack": [
+        "react",
+        "tailwind",
+        "motion",
+        "gsap"
+      ],
+      "use": "animated components/patterns"
+    },
+    {
+      "id": "unlumen",
+      "kind": "animated-registry",
+      "stack": [
+        "react",
+        "tailwind",
+        "motion"
+      ],
+      "use": "polished motion primitives"
+    },
+    {
+      "id": "animata",
+      "kind": "animated-registry",
+      "stack": [
+        "react",
+        "tailwind"
+      ],
+      "use": "copy-paste effects/components"
+    },
+    {
+      "id": "threeui",
+      "kind": "3d-registry",
+      "stack": [
+        "react",
+        "three",
+        "webgl"
+      ],
+      "use": "community 3D/WebGL components/assets"
+    },
+    {
+      "id": "img2threejs",
+      "kind": "specialist-skill",
+      "stack": [
+        "three",
+        "typescript"
+      ],
+      "use": "reference-image procedural 3D reconstruction"
+    },
+    {
+      "id": "spline",
+      "kind": "3d-authoring",
+      "stack": [
+        "web",
+        "react",
+        "next"
+      ],
+      "use": "visually authored interactive scene + code API"
+    },
+    {
+      "id": "threlte",
+      "kind": "3d-framework",
+      "stack": [
+        "svelte",
+        "three"
+      ],
+      "use": "declarative Svelte 3D"
+    },
+    {
+      "id": "theatre",
+      "kind": "motion-authoring",
+      "stack": [
+        "js",
+        "three",
+        "r3f",
+        "html"
+      ],
+      "use": "browser keyframe/graph motion direction"
+    },
+    {
+      "id": "stitch",
+      "kind": "design-generation",
+      "stack": [
+        "mcp"
+      ],
+      "use": "screens/variants/design-system workflow"
+    },
+    {
+      "id": "agentation",
+      "kind": "visual-feedback",
+      "stack": [
+        "react",
+        "web"
+      ],
+      "use": "structured UI annotations -> source"
+    },
+    {
+      "id": "refero",
+      "kind": "research",
+      "stack": [
+        "design"
+      ],
+      "use": "styles/screens/flows reference locks"
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "kind": "knowledge-catalog",
+      "stack": [
+        "multi"
+      ],
+      "use": "searchable style/palette/type/UX/chart/stack reference"
+    },
+    {
+      "id": "impeccable",
+      "kind": "design-method",
+      "stack": [
+        "web"
+      ],
+      "use": "design vocabulary, anti-slop, audit/polish/live iteration"
+    },
+    {
+      "id": "styles-refero",
+      "kind": "style-reference",
+      "stack": [
+        "design"
+      ],
+      "use": "curated style examples and reference locks"
+    },
+    {
+      "id": "animate-ui",
+      "kind": "animated-registry",
+      "stack": [
+        "react",
+        "tailwind",
+        "motion"
+      ],
+      "use": "animated source components"
+    },
+    {
+      "id": "motion",
+      "kind": "motion-engine",
+      "stack": [
+        "web",
+        "react"
+      ],
+      "use": "springs, gestures, layout and state motion"
+    },
+    {
+      "id": "gsap",
+      "kind": "motion-engine",
+      "stack": [
+        "web",
+        "js"
+      ],
+      "use": "complex timelines, Flip, Observer and scroll choreography"
+    },
+    {
+      "id": "reanimated",
+      "kind": "native-motion-engine",
+      "stack": [
+        "react-native"
+      ],
+      "use": "UI-thread gestures, layout and scroll animation"
+    },
+    {
+      "id": "theatrejs",
+      "kind": "motion-authoring",
+      "stack": [
+        "js",
+        "three",
+        "r3f",
+        "html"
+      ],
+      "use": "browser dope-sheet/graph authored animation"
+    },
+    {
+      "id": "peachweb",
+      "kind": "3d-authoring-reference",
+      "stack": [
+        "webgl"
+      ],
+      "use": "responsive scroll-triggered 3D authoring patterns"
+    },
+    {
+      "id": "animmaster",
+      "kind": "motion-inspiration",
+      "stack": [
+        "web"
+      ],
+      "use": "taxonomy for scroll/mouse/page/webgl/3d/svg effects; no paid source copying"
+    },
+    {
+      "id": "design-md-chrome",
+      "kind": "design-extraction",
+      "stack": [
+        "browser",
+        "web"
+      ],
+      "use": "measured design-system extraction inspiration"
+    },
+    {
+      "id": "awesome-design-skills",
+      "kind": "design-reference-index",
+      "stack": [
+        "design"
+      ],
+      "use": "curated DESIGN.md and design-skill discovery"
+    },
+    {
+      "id": "taste-skill",
+      "kind": "design-method",
+      "stack": [
+        "web"
+      ],
+      "use": "variance/motion/density decision dials and anti-slop ideas"
+    },
+    {
+      "id": "superpowers",
+      "kind": "agent-process",
+      "stack": [
+        "agents"
+      ],
+      "use": "pressure-case skill testing and evidence-before-claims"
+    },
+    {
+      "id": "claude-superpower",
+      "kind": "skill-index",
+      "stack": [
+        "claude",
+        "agents"
+      ],
+      "use": "skill discovery/trust metadata; not design authority"
+    },
+    {
+      "id": "brain-md",
+      "kind": "project-memory",
+      "stack": [
+        "agents"
+      ],
+      "use": "durable decisions/constraints separate from DESIGN.md execution truth"
+    },
+    {
+      "id": "ruflo",
+      "kind": "orchestration",
+      "stack": [
+        "agents"
+      ],
+      "use": "optional specialized research/design/review subagents"
+    },
+    {
+      "id": "freebuff",
+      "kind": "agent-runtime-reference",
+      "stack": [
+        "agents"
+      ],
+      "use": "portability/process reference; no visual doctrine"
+    },
+    {
+      "id": "large-skill-catalogs",
+      "kind": "discovery",
+      "stack": [
+        "agents"
+      ],
+      "use": "discover candidate security/backend/UI skills with provenance review"
+    },
+    {
+      "id": "security-skill-repos",
+      "kind": "specialist-reference",
+      "stack": [
+        "security"
+      ],
+      "use": "defer deep appsec; inform auth/permission/security-sensitive UI contracts"
+    },
+    {
+      "id": "backend-skills",
+      "kind": "specialist-reference",
+      "stack": [
+        "backend"
+      ],
+      "use": "defer backend architecture; map API/error/loading/idempotency contracts into UI"
+    }
+  ],
+  "product_archetypes": [
+    {
+      "id": "soc",
+      "mode": "OPERATE",
+      "density": 9,
+      "motion": 2,
+      "immersion": 2,
+      "priority": [
+        "alerts",
+        "freshness",
+        "scope",
+        "telemetry"
+      ]
+    },
+    {
+      "id": "banking-transfer",
+      "mode": "TRANSACT",
+      "density": 5,
+      "motion": 2,
+      "immersion": 1,
+      "priority": [
+        "amount",
+        "recipient",
+        "confirmation",
+        "recovery"
+      ]
+    },
+    {
+      "id": "music-player",
+      "mode": "OPERATE",
+      "density": 5,
+      "motion": 6,
+      "immersion": 5,
+      "priority": [
+        "artwork",
+        "playback",
+        "queue",
+        "device"
+      ]
+    },
+    {
+      "id": "creative-portfolio",
+      "mode": "EXPLORE",
+      "density": 3,
+      "motion": 7,
+      "immersion": 7,
+      "priority": [
+        "work",
+        "identity",
+        "story"
+      ]
+    },
+    {
+      "id": "docs",
+      "mode": "READ",
+      "density": 6,
+      "motion": 1,
+      "immersion": 1,
+      "priority": [
+        "search",
+        "hierarchy",
+        "reading"
+      ]
+    },
+    {
+      "id": "ecommerce-checkout",
+      "mode": "TRANSACT",
+      "density": 5,
+      "motion": 2,
+      "immersion": 1,
+      "priority": [
+        "cart",
+        "address",
+        "payment",
+        "trust"
+      ]
+    },
+    {
+      "id": "product-launch",
+      "mode": "PERSUADE",
+      "density": 4,
+      "motion": 7,
+      "immersion": 6,
+      "priority": [
+        "understanding",
+        "proof",
+        "conversion"
+      ]
+    },
+    {
+      "id": "native-social",
+      "mode": "NATIVE",
+      "density": 6,
+      "motion": 5,
+      "immersion": 3,
+      "priority": [
+        "feed",
+        "creation",
+        "messages",
+        "presence"
+      ]
+    },
+    {
+      "id": "saas-marketing",
+      "mode": "PERSUADE",
+      "density": 4,
+      "motion": 5,
+      "immersion": 3,
+      "priority": [
+        "value",
+        "proof",
+        "product-understanding",
+        "conversion"
+      ]
+    },
+    {
+      "id": "b2b-enterprise",
+      "mode": "PERSUADE",
+      "density": 5,
+      "motion": 3,
+      "immersion": 2,
+      "priority": [
+        "trust",
+        "capability",
+        "evidence",
+        "navigation"
+      ]
+    },
+    {
+      "id": "admin-dashboard",
+      "mode": "OPERATE",
+      "density": 8,
+      "motion": 2,
+      "immersion": 1,
+      "priority": [
+        "scan",
+        "filter",
+        "action",
+        "state"
+      ]
+    },
+    {
+      "id": "developer-tool",
+      "mode": "OPERATE",
+      "density": 8,
+      "motion": 3,
+      "immersion": 2,
+      "priority": [
+        "keyboard",
+        "code-data",
+        "speed",
+        "context"
+      ]
+    },
+    {
+      "id": "creative-editor",
+      "mode": "OPERATE",
+      "density": 8,
+      "motion": 5,
+      "immersion": 4,
+      "priority": [
+        "canvas",
+        "tools",
+        "selection",
+        "history"
+      ]
+    },
+    {
+      "id": "ecommerce-discovery",
+      "mode": "EXPLORE",
+      "density": 5,
+      "motion": 5,
+      "immersion": 3,
+      "priority": [
+        "browse",
+        "compare",
+        "product",
+        "cart"
+      ]
+    },
+    {
+      "id": "fashion-commerce",
+      "mode": "EXPLORE",
+      "density": 4,
+      "motion": 6,
+      "immersion": 5,
+      "priority": [
+        "imagery",
+        "product",
+        "variant",
+        "purchase"
+      ]
+    },
+    {
+      "id": "restaurant",
+      "mode": "PERSUADE",
+      "density": 4,
+      "motion": 4,
+      "immersion": 3,
+      "priority": [
+        "menu",
+        "hours",
+        "location",
+        "booking"
+      ]
+    },
+    {
+      "id": "travel-booking",
+      "mode": "TRANSACT",
+      "density": 6,
+      "motion": 3,
+      "immersion": 2,
+      "priority": [
+        "search",
+        "compare",
+        "dates",
+        "price",
+        "booking"
+      ]
+    },
+    {
+      "id": "hospitality-marketing",
+      "mode": "PERSUADE",
+      "density": 3,
+      "motion": 6,
+      "immersion": 5,
+      "priority": [
+        "imagery",
+        "rooms",
+        "location",
+        "booking"
+      ]
+    },
+    {
+      "id": "real-estate",
+      "mode": "EXPLORE",
+      "density": 5,
+      "motion": 5,
+      "immersion": 5,
+      "priority": [
+        "property",
+        "spatial",
+        "facts",
+        "inquiry"
+      ]
+    },
+    {
+      "id": "publication",
+      "mode": "READ",
+      "density": 5,
+      "motion": 2,
+      "immersion": 1,
+      "priority": [
+        "scan",
+        "read",
+        "navigate",
+        "recirculate"
+      ]
+    },
+    {
+      "id": "government-service",
+      "mode": "TRANSACT",
+      "density": 6,
+      "motion": 1,
+      "immersion": 1,
+      "priority": [
+        "eligibility",
+        "completion",
+        "clarity",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "healthcare-patient",
+      "mode": "TRANSACT",
+      "density": 5,
+      "motion": 2,
+      "immersion": 1,
+      "priority": [
+        "clarity",
+        "privacy",
+        "appointment",
+        "recovery"
+      ]
+    },
+    {
+      "id": "education-learning",
+      "mode": "OPERATE",
+      "density": 5,
+      "motion": 4,
+      "immersion": 2,
+      "priority": [
+        "lesson",
+        "progress",
+        "practice",
+        "feedback"
+      ]
+    },
+    {
+      "id": "video-media",
+      "mode": "EXPLORE",
+      "density": 5,
+      "motion": 6,
+      "immersion": 4,
+      "priority": [
+        "content",
+        "playback",
+        "discovery",
+        "controls"
+      ]
+    },
+    {
+      "id": "messaging",
+      "mode": "NATIVE",
+      "density": 7,
+      "motion": 4,
+      "immersion": 2,
+      "priority": [
+        "conversation",
+        "presence",
+        "compose",
+        "attachments"
+      ]
+    },
+    {
+      "id": "map-app",
+      "mode": "NATIVE",
+      "density": 6,
+      "motion": 4,
+      "immersion": 5,
+      "priority": [
+        "map",
+        "location",
+        "route",
+        "controls"
+      ]
+    },
+    {
+      "id": "smart-home",
+      "mode": "NATIVE",
+      "density": 6,
+      "motion": 5,
+      "immersion": 3,
+      "priority": [
+        "status",
+        "control",
+        "room",
+        "automation"
+      ]
+    },
+    {
+      "id": "automotive-showcase",
+      "mode": "EXPLORE",
+      "density": 3,
+      "motion": 8,
+      "immersion": 8,
+      "priority": [
+        "vehicle",
+        "material",
+        "configuration",
+        "story"
+      ]
+    },
+    {
+      "id": "architecture-portfolio",
+      "mode": "EXPLORE",
+      "density": 3,
+      "motion": 6,
+      "immersion": 7,
+      "priority": [
+        "project",
+        "space",
+        "drawing",
+        "story"
+      ]
+    },
+    {
+      "id": "gaming-community",
+      "mode": "EXPLORE",
+      "density": 6,
+      "motion": 7,
+      "immersion": 6,
+      "priority": [
+        "game",
+        "identity",
+        "community",
+        "events"
+      ]
+    },
+    {
+      "id": "ai-chat-product",
+      "mode": "OPERATE",
+      "density": 6,
+      "motion": 4,
+      "immersion": 2,
+      "priority": [
+        "conversation",
+        "model-state",
+        "attachments",
+        "history"
+      ]
+    },
+    {
+      "id": "native-finance",
+      "mode": "NATIVE",
+      "density": 6,
+      "motion": 3,
+      "immersion": 1,
+      "priority": [
+        "balance",
+        "transaction",
+        "security",
+        "clarity"
+      ]
+    },
+    {
+      "id": "wearable-glance",
+      "mode": "NATIVE",
+      "density": 3,
+      "motion": 2,
+      "immersion": 1,
+      "priority": [
+        "glance",
+        "status",
+        "single-action"
+      ]
+    }
+  ]
+}

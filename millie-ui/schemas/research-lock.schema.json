@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Millie Research Lock",
+  "type": "object",
+  "required": [
+    "references"
+  ],
+  "properties": {
+    "references": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "layer",
+          "decisions_to_borrow"
+        ],
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "layer": {
+            "enum": [
+              "style",
+              "screen",
+              "flow",
+              "motion",
+              "3d",
+              "platform"
+            ]
+          },
+          "decisions_to_borrow": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "decisions_to_avoid": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "relevance": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

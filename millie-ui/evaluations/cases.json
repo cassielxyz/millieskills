@@ -1,0 +1,215 @@
+{
+  "version": "2.0.0",
+  "note": "Pressure/evaluation scenarios for running against an actual agent. Structural validator does not claim behavioral pass.",
+  "cases": [
+    {
+      "id": "no-direction-creative",
+      "prompt": "Build a premium homepage for a new music discovery product. No style instructions.",
+      "must": [
+        "auto art direction",
+        "product-specific signature",
+        "not repeated generic SaaS",
+        "responsive",
+        "states"
+      ],
+      "must_not": [
+        "purple gradient reflex",
+        "generic feature-card template"
+      ]
+    },
+    {
+      "id": "shadcn-existing",
+      "prompt": "Add account security settings to this customized shadcn app.",
+      "must": [
+        "read components.json",
+        "preserve customized primitives",
+        "current composition",
+        "permission/error states"
+      ],
+      "must_not": [
+        "overwrite local button",
+        "hand-roll primitive from memory"
+      ]
+    },
+    {
+      "id": "scroll-campaign",
+      "prompt": "Make this product launch cinematic with scroll animation.",
+      "must": [
+        "choose scroll engine by complexity",
+        "normal reading order",
+        "reduced motion",
+        "mobile/perf",
+        "bounded pinning"
+      ],
+      "must_not": [
+        "scroll hijack",
+        "pin every section"
+      ]
+    },
+    {
+      "id": "gsap-overkill",
+      "prompt": "Animate a button hover in our React site.",
+      "must": [
+        "prefer CSS/simple solution"
+      ],
+      "must_not": [
+        "install GSAP without need"
+      ]
+    },
+    {
+      "id": "motion-shared-layout",
+      "prompt": "Animate a card expanding into a detail panel in React.",
+      "must": [
+        "object continuity",
+        "Motion layout or Flip based on stack",
+        "reverse path"
+      ],
+      "must_not": [
+        "unrelated slide direction"
+      ]
+    },
+    {
+      "id": "rn-reanimated",
+      "prompt": "Create a smooth swipeable bottom sheet in React Native.",
+      "must": [
+        "Reanimated/Gesture Handler",
+        "UI-thread model",
+        "reduced motion",
+        "release performance"
+      ],
+      "must_not": [
+        "web GSAP"
+      ]
+    },
+    {
+      "id": "image-to-3d",
+      "prompt": "Turn this product image into an animated 3D hero on our React site.",
+      "must": [
+        "suitability/inference",
+        "img2threejs delegation if available",
+        "R3F/Three integration",
+        "fallback",
+        "performance"
+      ],
+      "must_not": [
+        "promise exact hidden geometry"
+      ]
+    },
+    {
+      "id": "svelte-3d",
+      "prompt": "Add an interactive 3D product model to our Svelte site.",
+      "must": [
+        "prefer Threlte/Three"
+      ],
+      "must_not": [
+        "force R3F"
+      ]
+    },
+    {
+      "id": "spline-existing",
+      "prompt": "We already have a Spline scene; connect product color buttons to it.",
+      "must": [
+        "use Spline Code API when available",
+        "DOM controls",
+        "fallback"
+      ],
+      "must_not": [
+        "rebuild scene from scratch"
+      ]
+    },
+    {
+      "id": "stitch-unavailable",
+      "prompt": "Use Stitch ideas to improve this screen, but there is no Stitch MCP configured.",
+      "must": [
+        "standalone fallback"
+      ],
+      "must_not": [
+        "invent Stitch calls"
+      ]
+    },
+    {
+      "id": "agentation-feedback",
+      "prompt": "Address the Agentation annotations on this page.",
+      "must": [
+        "batch/root-cause annotations",
+        "map source",
+        "rerender"
+      ],
+      "must_not": [
+        "one-off contradictory patches"
+      ]
+    },
+    {
+      "id": "pro-library",
+      "prompt": "Copy this paid Animmaster Pro component from its preview into our site.",
+      "must": [
+        "respect access/license",
+        "offer original implementation of principle"
+      ],
+      "must_not": [
+        "copy paid source without entitlement"
+      ]
+    },
+    {
+      "id": "cyber-dashboard",
+      "prompt": "Design a SOC dashboard.",
+      "must": [
+        "data density",
+        "alert hierarchy",
+        "real state/freshness",
+        "security/backend contract states"
+      ],
+      "must_not": [
+        "Matrix rain",
+        "fake terminal",
+        "fake metrics"
+      ]
+    },
+    {
+      "id": "auth-enumeration",
+      "prompt": "Make login errors very specific so users know whether the email exists.",
+      "must": [
+        "consider auth enumeration security",
+        "balanced recovery"
+      ],
+      "must_not": [
+        "blindly expose account existence"
+      ]
+    },
+    {
+      "id": "existing-refero",
+      "prompt": "Redesign a high-visibility ecommerce discovery page using current references.",
+      "must": [
+        "style/screen/flow research locks",
+        "decision ledger",
+        "original synthesis"
+      ],
+      "must_not": [
+        "inspiration averaging",
+        "competitor clone"
+      ]
+    },
+    {
+      "id": "brain-memory",
+      "prompt": "This project has BRAIN.md and we decided all transaction surfaces must remain low motion.",
+      "must": [
+        "read durable decision",
+        "respect low-motion constraint"
+      ],
+      "must_not": [
+        "duplicate raw tokens into brain"
+      ]
+    },
+    {
+      "id": "library-soup",
+      "prompt": "Use shadcn, SmoothUI, Unlumen, ThreeUI and Animata all over the same landing page.",
+      "must": [
+        "select small coherent source set",
+        "explain rejection by fit"
+      ],
+      "must_not": [
+        "mix every registry"
+      ]
+    }
+  ]
+}
