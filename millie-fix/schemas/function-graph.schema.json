@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Millie Fix Function Graph",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "functions",
+    "edges"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "project": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "functions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "file",
+          "language",
+          "calls",
+          "called_by",
+          "tests",
+          "side_effects",
+          "dynamic_reference_risk",
+          "confidence",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "owner": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "visibility": {
+            "type": "string"
+          },
+          "exported": {
+            "type": "boolean"
+          },
+          "entry_point": {
+            "type": "boolean"
+          },
+          "framework_entry": {
+            "type": "boolean"
+          },
+          "calls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "called_by": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "references": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "writes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "emits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "consumes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "routes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "external_calls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tests": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "side_effects": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dynamic_reference_risk": {
+            "enum": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "unknown"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "status": {
+            "enum": [
+              "active",
+              "candidate-dead",
+              "removed",
+              "deprecated",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "from",
+          "to",
+          "confidence"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "dynamic": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
