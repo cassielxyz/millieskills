@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "collection": "Millie Agent Skills",
-  "repository": "YOUR_GITHUB_USERNAME/YOUR_REPOSITORY",
+  "repository": "cassielxyz/millieskill",
   "branch": "main",
   "skills_root": "skills",
   "skills": [
