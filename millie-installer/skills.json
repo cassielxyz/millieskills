@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "collection": "Millie Agent Skills",
+  "repository": "YOUR_GITHUB_USERNAME/YOUR_REPOSITORY",
+  "branch": "main",
+  "skills_root": "skills",
+  "skills": [
+    {
+      "id": "millie-ui",
+      "name": "Millie UI/UX",
+      "short": "Premium UI/UX, art direction, responsive design, motion and 3D/WebGL.",
+      "path": "skills/millie-ui",
+      "status": "available"
+    },
+    {
+      "id": "millie-fix",
+      "name": "Millie Fix",
+      "short": "Repository repair, debugging, refactoring, cleanup and architecture recovery.",
+      "path": "skills/millie-fix",
+      "status": "available"
+    },
+    {
+      "id": "millie-sec",
+      "name": "Millie Security",
+      "short": "Secure-code review, vulnerability analysis, threat modeling and remediation.",
+      "path": "skills/millie-sec",
+      "status": "planned"
+    },
+    {
+      "id": "millie-qa",
+      "name": "Millie QA",
+      "short": "Testing strategy, regression testing, quality gates and verification.",
+      "path": "skills/millie-qa",
+      "status": "planned"
+    },
+    {
+      "id": "millie-arch",
+      "name": "Millie Architecture",
+      "short": "Software architecture discovery, design, boundaries and modernization.",
+      "path": "skills/millie-arch",
+      "status": "planned"
+    },
+    {
+      "id": "millie-api",
+      "name": "Millie API",
+      "short": "Backend and API design, contracts, integrations, reliability and performance.",
+      "path": "skills/millie-api",
+      "status": "planned"
+    },
+    {
+      "id": "millie-db",
+      "name": "Millie Database",
+      "short": "Data modeling, SQL, migrations, indexing, query design and database reliability.",
+      "path": "skills/millie-db",
+      "status": "planned"
+    },
+    {
+      "id": "millie-mobile",
+      "name": "Millie Mobile",
+      "short": "Android, iOS, Flutter and adaptive native-mobile engineering.",
+      "path": "skills/millie-mobile",
+      "status": "planned"
+    },
+    {
+      "id": "millie-devops",
+      "name": "Millie DevOps",
+      "short": "CI/CD, containers, deployment, infrastructure, observability and operations.",
+      "path": "skills/millie-devops",
+      "status": "planned"
+    },
+    {
+      "id": "millie-docs",
+      "name": "Millie Docs",
+      "short": "Technical documentation, architecture docs, READMEs, handoffs and project memory.",
+      "path": "skills/millie-docs",
+      "status": "planned"
+    },
+    {
+      "id": "millie-plan",
+      "name": "Millie Plan",
+      "short": "Project discovery, implementation planning, dependency-aware execution plans.",
+      "path": "skills/millie-plan",
+      "status": "planned"
+    },
+    {
+      "id": "millie-audit",
+      "name": "Millie Audit",
+      "short": "Full-project final audit across correctness, security, quality and maintainability.",
+      "path": "skills/millie-audit",
+      "status": "planned"
+    }
+  ]
+}
