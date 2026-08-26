@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <linearGradient id="millieGrad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EC4899"/>
+      <stop offset=".24" stop-color="#F97316"/>
+      <stop offset=".48" stop-color="#F59E0B"/>
+      <stop offset=".68" stop-color="#22C55E"/>
+      <stop offset=".84" stop-color="#06B6D4"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="coolGrad" x1="2" y1="2" x2="22" y2="22">
+      <stop stop-color="#06B6D4"/>
+      <stop offset=".5" stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+
+  </defs>
+
+
+  <g stroke="url(#millieGrad)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m12 2 8 4.5v9L12 20l-8-4.5v-9z"/><path d="m4 6.5 8 4.5 8-4.5M12 11v9"/>
+  </g>
+
+
+</svg>

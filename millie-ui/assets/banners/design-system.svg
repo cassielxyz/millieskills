@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" fill="none">
+  <rect width="1200" height="260" rx="30" fill="#F8FAFC"/>
+  <text x="70" y="60" fill="#0F172A" font-family="ui-sans-serif,system-ui" font-size="31" font-weight="850">MILLIE DESIGN SYSTEM</text>
+  <g font-family="ui-sans-serif,system-ui" font-size="17" font-weight="700">
+    <rect x="70" y="100" width="180" height="90" rx="20" fill="#FCE7F3"/><text x="160" y="150" text-anchor="middle" fill="#9D174D">COLOR</text>
+    <rect x="275" y="100" width="180" height="90" rx="20" fill="#FEF3C7"/><text x="365" y="150" text-anchor="middle" fill="#92400E">TYPE</text>
+    <rect x="480" y="100" width="180" height="90" rx="20" fill="#DCFCE7"/><text x="570" y="150" text-anchor="middle" fill="#166534">LAYOUT</text>
+    <rect x="685" y="100" width="180" height="90" rx="20" fill="#CFFAFE"/><text x="775" y="150" text-anchor="middle" fill="#155E75">MOTION</text>
+    <rect x="890" y="100" width="180" height="90" rx="20" fill="#EDE9FE"/><text x="980" y="150" text-anchor="middle" fill="#5B21B6">SPATIAL</text>
+  </g>
+</svg>

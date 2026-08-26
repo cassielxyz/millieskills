@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" fill="none">
+  <defs>
+    <linearGradient id="g" x1="100" y1="80" x2="1090" y2="160">
+      <stop stop-color="#EC4899"/>
+      <stop offset=".25" stop-color="#F59E0B"/>
+      <stop offset=".5" stop-color="#22C55E"/>
+      <stop offset=".75" stop-color="#06B6D4"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="30" fill="#0F172A"/>
+  <path d="M90 145C190 55 280 205 390 118S580 50 685 128S860 210 1110 92" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="390" cy="118" r="13" fill="#F59E0B"/>
+  <circle cx="685" cy="128" r="13" fill="#06B6D4"/>
+  <text x="600" y="57" text-anchor="middle" fill="white" font-family="ui-sans-serif,system-ui" font-size="30" font-weight="850">MOTION WITH PURPOSE</text>
+  <text x="600" y="205" text-anchor="middle" fill="#94A3B8" font-family="ui-sans-serif,system-ui" font-size="17" font-weight="600">Feedback · Continuity · Hierarchy · Spatial Understanding · Delight</text>
+</svg>

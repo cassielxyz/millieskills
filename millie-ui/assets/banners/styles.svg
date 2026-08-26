@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 250" fill="none">
+  <rect width="1200" height="250" rx="30" fill="#F8FAFC"/>
+  <text x="600" y="55" text-anchor="middle" fill="#0F172A" font-family="ui-sans-serif,system-ui" font-size="30" font-weight="850">VISUAL STYLE INTELLIGENCE</text>
+  <g font-family="ui-sans-serif,system-ui" font-size="16" font-weight="750" text-anchor="middle">
+    <rect x="65" y="95" width="160" height="80" rx="18" fill="#FCE7F3"/><text x="145" y="141" fill="#9D174D">EDITORIAL</text>
+    <rect x="245" y="95" width="160" height="80" rx="18" fill="#FFEDD5"/><text x="325" y="141" fill="#9A3412">BRUTALIST</text>
+    <rect x="425" y="95" width="160" height="80" rx="18" fill="#FEF3C7"/><text x="505" y="141" fill="#92400E">LUXURY</text>
+    <rect x="605" y="95" width="160" height="80" rx="18" fill="#DCFCE7"/><text x="685" y="141" fill="#166534">ORGANIC</text>
+    <rect x="785" y="95" width="160" height="80" rx="18" fill="#CFFAFE"/><text x="865" y="141" fill="#155E75">GLASS</text>
+    <rect x="965" y="95" width="160" height="80" rx="18" fill="#EDE9FE"/><text x="1045" y="141" fill="#5B21B6">SPATIAL</text>
+  </g>
+</svg>

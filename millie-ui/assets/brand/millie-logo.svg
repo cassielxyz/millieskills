@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 190" fill="none">
+  <defs>
+    <linearGradient id="g" x1="28" y1="22" x2="166" y2="162">
+      <stop stop-color="#EC4899"/>
+      <stop offset=".2" stop-color="#F97316"/>
+      <stop offset=".42" stop-color="#F59E0B"/>
+      <stop offset=".62" stop-color="#22C55E"/>
+      <stop offset=".82" stop-color="#06B6D4"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="tg" x1="205" y1="45" x2="670" y2="140">
+      <stop stop-color="#EC4899"/>
+      <stop offset=".35" stop-color="#F59E0B"/>
+      <stop offset=".67" stop-color="#06B6D4"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect x="22" y="22" width="136" height="136" rx="42" fill="#0B1020"/>
+  <path d="M45 120V62L70 91L90 68L110 91L135 62V120" stroke="url(#g)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="194" y="92" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="60" font-weight="850" fill="url(#tg)" letter-spacing="-2">MILLIE UI/UX</text>
+  <text x="198" y="134" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="21" font-weight="650" fill="#64748B" letter-spacing="2.2">DESIGN WITH TASTE · BUILD WITH INTENT</text>
+</svg>
