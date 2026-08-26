@@ -1,205 +1,463 @@
-# Millie — One-Line Installer
+# Millie Skills Installer
 
-> Replace `cassielxyz/millieskills` once in `install.ps1` and `skills.json`
-> before publishing.
+Install **Millie Agent Skills** globally for your AI coding tools with a simple interactive PowerShell installer.
 
-## Quick Install — PowerShell
+The installer lets you choose:
+
+* which Millie skill to install;
+* which AI coding platform to install it for;
+* one skill or all available skills;
+* one platform, detected platforms, or all supported platforms.
+
+---
+
+## Quick Install
+
+Open **PowerShell** and paste:
 
 ```powershell
 irm https://raw.githubusercontent.com/cassielxyz/millieskills/main/millie-installer/install.ps1 | iex
 ```
 
-The installer opens an interactive terminal UI:
+Press **Enter**.
 
-```text
-          ███╗   ███╗██╗██╗     ██╗     ██╗███████╗
-          ████╗ ████║██║██║     ██║     ██║██╔════╝
-          ██╔████╔██║██║██║     ██║     ██║█████╗
-          ██║╚██╔╝██║██║██║     ██║     ██║██╔══╝
-          ██║ ╚═╝ ██║██║███████╗███████╗██║███████╗
-          ╚═╝     ╚═╝╚═╝╚══════╝╚══════╝╚═╝╚══════╝
+That's it.
 
-                   UNIVERSAL AGENT SKILLS INSTALLER
+The Millie installer will open automatically.
 
-  ────────────────────────────────────────────────────────────────
-  SELECT SKILL
-  ────────────────────────────────────────────────────────────────
+---
 
-  [ 1] Millie UI/UX
-  [ 2] Millie Fix
-  [ 3] Millie Security          [COMING SOON]
-  [ 4] Millie QA                [COMING SOON]
-  [ 5] Millie Architecture      [COMING SOON]
-  ...
-  [ A] Install ALL available skills
-```
+## Don't Be Afraid of the Terminal Command
 
-After selecting a skill:
-
-```text
-  SELECT PLATFORM
-
-  [ 1] Claude Code
-       ~/.claude/skills
-
-  [ 2] Google Antigravity
-       ~/.gemini/config/skills
-
-  [ 3] Antigravity CLI
-       ~/.gemini/antigravity-cli/skills
-
-  [ 4] VS Code / GitHub Copilot
-       ~/.copilot/skills
-
-  [ 5] Cursor
-       ~/.cursor/skills
-
-  [ 6] OpenAI Codex
-       ~/.agents/skills
-
-  [ 7] Gemini CLI
-       ~/.gemini/skills
-
-  [ D] Auto-detect installed platforms
-  [ A] Install to ALL supported platforms
-```
-
-## What the installer does
-
-1. Downloads `skills.json`.
-2. Shows only published skills as installable.
-3. Downloads the current repository archive to a temporary folder.
-4. Copies the full skill folder — `SKILL.md`, references, scripts, assets, schemas, etc.
-5. Installs it into the selected platform's **global/personal** skills directory.
-6. Verifies that `SKILL.md` exists after installation.
-7. Keeps an installation registry at:
-
-```text
-~/.millie/installed.json
-```
-
-8. Deletes the temporary repository archive.
-
-## Existing installation
-
-If a skill already exists, the installer offers:
-
-```text
-[R] Replace / update
-[B] Backup existing, then update
-[S] Skip
-```
-
-Backups are saved next to the skill:
-
-```text
-millie-ui.__backup_20260826-104500/
-```
-
-## Non-interactive examples
-
-Install Millie UI into Claude Code:
+If you are not familiar with PowerShell, the command may look complicated:
 
 ```powershell
-& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY/main/install.ps1"))) -Skill millie-ui -Platform claude -Force
+irm https://raw.githubusercontent.com/cassielxyz/millieskills/main/millie-installer/install.ps1 | iex
 ```
 
-Install UI + Fix into Cursor:
+It is simply a short way of doing this:
+
+```text
+Download Millie's install.ps1
+            ↓
+Run install.ps1 in PowerShell
+            ↓
+Open the Millie installer
+```
+
+In PowerShell:
+
+```text
+irm
+```
+
+means:
+
+```text
+Invoke-RestMethod
+```
+
+It downloads the installer from this GitHub repository.
+
+And:
+
+```text
+iex
+```
+
+means:
+
+```text
+Invoke-Expression
+```
+
+It runs the downloaded PowerShell script.
+
+So the command is essentially:
+
+```text
+Download Millie Installer
+        +
+Run Millie Installer
+```
+
+The installer source is public in this repository, so you can inspect it before running it:
+
+`millie-installer/install.ps1`
+
+---
+
+## Prefer to Inspect It First?
+
+You do not have to execute the one-line command directly.
+
+Download the installer first:
 
 ```powershell
-& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY/main/install.ps1"))) -Skill "millie-ui,millie-fix" -Platform cursor -Force
+irm https://raw.githubusercontent.com/cassielxyz/millieskills/main/millie-installer/install.ps1 -OutFile "$env:TEMP\millie-install.ps1"
 ```
 
-Install all currently available skills into all supported platform directories:
+Open it:
 
 ```powershell
-& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY/main/install.ps1"))) -AllSkills -AllPlatforms -Force
+notepad "$env:TEMP\millie-install.ps1"
 ```
 
-Install all available skills only into detected platforms:
-
-```powershell
-& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY/main/install.ps1"))) -AllSkills -Platform detected -Force
-```
-
-## Safer download-first alternative
-
-Users who prefer to inspect the installer before executing it can use:
-
-```powershell
-$u="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY/main/install.ps1"; $f="$env:TEMP\millie-install.ps1"; iwr $u -OutFile $f; notepad $f
-```
-
-Then run:
+After reviewing it, run:
 
 ```powershell
 & "$env:TEMP\millie-install.ps1"
 ```
 
-## Recommended repository layout
+This performs the same installation while allowing you to inspect the script first.
+
+---
+
+# How It Works
+
+After running the installer, you will see the Millie terminal interface:
 
 ```text
-millie/
+███╗   ███╗██╗██╗     ██╗     ██╗███████╗
+████╗ ████║██║██║     ██║     ██║██╔════╝
+██╔████╔██║██║██║     ██║     ██║█████╗
+██║╚██╔╝██║██║██║     ██║     ██║██╔══╝
+██║ ╚═╝ ██║██║███████╗███████╗██║███████╗
+╚═╝     ╚═╝╚═╝╚══════╝╚══════╝╚═╝╚══════╝
+
+        UNIVERSAL AGENT SKILLS INSTALLER
+```
+
+The actual terminal banner uses Millie's:
+
+```text
+RED → ORANGE → YELLOW
+```
+
+gradient.
+
+---
+
+## Step 1 — Choose a Skill
+
+Example:
+
+```text
+SELECT SKILL
+
+[1] Millie UI/UX
+[2] Millie Fix
+[3] Millie Security          [COMING SOON]
+[4] Millie QA                [COMING SOON]
+[5] Millie Architecture      [COMING SOON]
+
+[A] Install ALL available skills
+[Q] Quit
+```
+
+Enter the number of the skill you want.
+
+For example:
+
+```text
+1
+```
+
+installs:
+
+```text
+millie-ui
+```
+
+---
+
+## Step 2 — Choose Your AI Coding Platform
+
+The installer then asks where Millie should be installed.
+
+Example:
+
+```text
+SELECT PLATFORM
+
+[1] Claude Code
+
+[2] Google Antigravity
+
+[3] Antigravity CLI
+
+[4] VS Code / GitHub Copilot
+
+[5] Cursor
+
+[6] OpenAI Codex
+
+[7] Gemini CLI
+
+[D] Auto-detect installed platforms
+
+[A] Install to ALL supported platforms
+
+[Q] Quit
+```
+
+Choose the platform you use.
+
+---
+
+# Supported Platforms
+
+| Platform                 | Global Millie Skills Location       |
+| ------------------------ | ----------------------------------- |
+| Claude Code              | `~/.claude/skills/`                 |
+| Google Antigravity       | `~/.gemini/config/skills/`          |
+| Antigravity CLI          | `~/.gemini/antigravity-cli/skills/` |
+| VS Code / GitHub Copilot | `~/.copilot/skills/`                |
+| Cursor                   | `~/.cursor/skills/`                 |
+| OpenAI Codex             | `~/.agents/skills/`                 |
+| Gemini CLI               | `~/.gemini/skills/`                 |
+
+Millie installs skills into the selected user's global/personal skill directory.
+
+That means you do not need to manually copy the skill into every new project.
+
+---
+
+# Auto Detect
+
+Instead of choosing manually, select:
+
+```text
+D
+```
+
+The installer attempts to detect supported AI coding tools already installed on your computer.
+
+It will then install Millie into the detected platforms.
+
+---
+
+# Install Everywhere
+
+Choose:
+
+```text
+A
+```
+
+from the platform menu to install the selected skill into every supported skill directory.
+
+You can also select:
+
+```text
+A
+```
+
+from the skill menu to install all currently available Millie skills.
+
+---
+
+# What Gets Installed?
+
+Millie does not install only `SKILL.md`.
+
+The **complete skill directory** is copied.
+
+For example:
+
+```text
+millie-ui/
+├── SKILL.md
 ├── README.md
-├── install.ps1
-├── skills.json
-│
-└── skills/
-    ├── millie-ui/
-    │   ├── SKILL.md
-    │   ├── README.md
-    │   ├── references/
-    │   ├── scripts/
-    │   └── assets/
-    │
-    ├── millie-fix/
-    │   ├── SKILL.md
-    │   ├── README.md
-    │   ├── references/
-    │   ├── schemas/
-    │   ├── scripts/
-    │   ├── templates/
-    │   └── assets/
-    │
-    ├── millie-sec/
-    ├── millie-qa/
-    └── ...
+├── references/
+├── scripts/
+└── assets/
 ```
 
-## Adding a future skill
-
-You do **not** need to modify `install.ps1`.
-
-Add the skill folder:
+or:
 
 ```text
-skills/millie-sec/
+millie-fix/
+├── SKILL.md
+├── README.md
+├── references/
+├── schemas/
+├── scripts/
+├── templates/
+└── assets/
 ```
 
-Then update `skills.json`:
+This ensures all supporting instructions, references, scripts and resources remain available to the agent.
 
-```json
-{
-  "id": "millie-sec",
-  "name": "Millie Security",
-  "short": "Secure-code review, vulnerability analysis and remediation.",
-  "path": "skills/millie-sec",
-  "status": "available"
-}
+---
+
+# Existing Installation
+
+If Millie detects that the selected skill already exists, you can choose:
+
+```text
+[R] Replace / update
+
+[B] Backup existing, then update
+
+[S] Skip
 ```
 
-The installer menu automatically makes it selectable.
+Choosing **Backup** keeps the previous version before installing the new one.
 
-## Current global installation targets
+Example:
 
-| Platform | Millie installs to |
-|---|---|
-| Claude Code | `~/.claude/skills/` |
-| Google Antigravity IDE | `~/.gemini/config/skills/` |
-| Antigravity CLI | `~/.gemini/antigravity-cli/skills/` |
-| VS Code / GitHub Copilot | `~/.copilot/skills/` |
-| Cursor | `~/.cursor/skills/` |
-| OpenAI Codex | `~/.agents/skills/` |
-| Gemini CLI | `~/.gemini/skills/` |
+```text
+millie-ui.__backup_20260827-041500
+```
 
-These are personal/global locations so the installed Millie skills can be discovered from projects across the user's machine.
+---
+
+# Installation Registry
+
+Millie keeps a small local record of installed skills at:
+
+```text
+~/.millie/installed.json
+```
+
+It can contain information such as:
+
+```text
+skill
+platform
+installation path
+repository
+branch
+installation time
+installer version
+```
+
+This will also make future Millie update and uninstall tools easier to support.
+
+---
+
+# Temporary Files
+
+The installer temporarily downloads the GitHub repository while installing a skill.
+
+After installation completes, the temporary download is removed.
+
+The actual Millie skill remains in the selected platform's global skills directory.
+
+---
+
+# Is It Safe?
+
+The installer is intentionally kept public and readable.
+
+You can inspect:
+
+```text
+millie-installer/install.ps1
+```
+
+before running it.
+
+The installer is designed to:
+
+```text
+download Millie skills
+create required skill directories
+copy selected skill folders
+update existing Millie installations when requested
+maintain the Millie installation registry
+remove its temporary download
+```
+
+You should still follow the same rule you should follow for **any** internet-delivered terminal command:
+
+> If you do not trust the source, inspect the script before executing it.
+
+The inspect-first method above is always available.
+
+---
+
+# No Administrator Required
+
+For normal installation, Millie installs under your user profile:
+
+```text
+C:\Users\YOUR_NAME\
+```
+
+rather than modifying system-wide Windows directories.
+
+In normal use you should therefore **not need to run PowerShell as Administrator**.
+
+---
+
+# After Installation
+
+Restart your AI editor or coding agent if it was already running.
+
+Then you can ask it to use the installed skill.
+
+Example:
+
+```text
+Use Millie UI to redesign this application.
+```
+
+or:
+
+```text
+Use Millie Fix to analyze and repair this repository.
+```
+
+Compatible agents may also automatically discover the skill based on the task.
+
+---
+
+# Quick Start
+
+```text
+1. Open PowerShell
+
+2. Paste:
+
+   irm https://raw.githubusercontent.com/cassielxyz/millieskills/main/millie-installer/install.ps1 | iex
+
+3. Press Enter
+
+4. Select a Millie skill
+
+5. Select your AI coding platform
+
+6. Confirm installation
+
+7. Restart your agent/editor if necessary
+
+8. Use Millie
+```
+
+---
+
+# Millie
+
+**Universal skills for AI coding agents.**
+
+One installer.
+
+Multiple skills.
+
+Multiple coding agents.
+
+Available across your projects.
+
+Repository:
+
+```text
+cassielxyz/millieskills
+```
+
+Installer:
+
+```text
+millie-installer/install.ps1
+```
