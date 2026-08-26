@@ -1,12 +1,12 @@
 # Millie — One-Line Installer
 
-> Replace `YOUR_GITHUB_USERNAME/YOUR_REPOSITORY` once in `install.ps1` and `skills.json`
+> Replace `cassielxyz/millieskills` once in `install.ps1` and `skills.json`
 > before publishing.
 
 ## Quick Install — PowerShell
 
 ```powershell
-irm https://github.com/cassielxyz/millieskills/edit/main/millie-installer/install.ps1 | iex
+irm https://raw.githubusercontent.com/cassielxyz/millieskills/main/millie-installer/install.ps1 | iex
 ```
 
 The installer opens an interactive terminal UI:
