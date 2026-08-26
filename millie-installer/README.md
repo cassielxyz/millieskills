@@ -6,7 +6,7 @@
 ## Quick Install — PowerShell
 
 ```powershell
-irm https://raw.githubusercontent.com/cassielxyz/millieskills/main/millie-installer/install.ps1 | iex
+irm https://github.com/cassielxyz/millieskills/edit/main/millie-installer/install.ps1 | iex
 ```
 
 The installer opens an interactive terminal UI:
