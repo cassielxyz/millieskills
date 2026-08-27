@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Millie Security Finding",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "severity",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low",
+        "info",
+        "unknown"
+      ]
+    },
+    "status": {
+      "enum": [
+        "CONFIRMED",
+        "HIGH-CONFIDENCE",
+        "PLAUSIBLE",
+        "UNVERIFIED",
+        "FALSE-POSITIVE",
+        "NOT-APPLICABLE",
+        "FIXED",
+        "ACCEPTED"
+      ]
+    },
+    "cwe": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "component": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "line": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "impact": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "root_cause": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "remediation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "verification": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "priority": {
+      "enum": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        null
+      ]
+    }
+  },
+  "additionalProperties": true
+}

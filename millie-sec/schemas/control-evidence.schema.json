@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Millie Security Control Evidence",
+  "type": "object",
+  "required": [
+    "control",
+    "status"
+  ],
+  "properties": {
+    "control": {
+      "type": "string"
+    },
+    "standard": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "applicable": {
+      "type": "boolean"
+    },
+    "implementation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "PARTIAL",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ]
+    },
+    "gap": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

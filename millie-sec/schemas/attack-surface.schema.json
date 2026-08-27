@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Millie Security Attack Surface",
+  "type": "object",
+  "properties": {
+    "interfaces": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "trust_boundaries": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "data_flows": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": true
+}

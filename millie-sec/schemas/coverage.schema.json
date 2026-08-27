@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Millie Security Coverage Ledger",
+  "type": "object",
+  "required": [
+    "domains"
+  ],
+  "properties": {
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "domain",
+          "applicable",
+          "status"
+        ],
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "applicable": {
+            "type": "boolean"
+          },
+          "method": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "enum": [
+              "planned",
+              "covered",
+              "partially-covered",
+              "blocked",
+              "not-tested",
+              "not-applicable"
+            ]
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}
