@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="160" viewBox="0 0 1600 160">
+
+<defs>
+  <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+  <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="48%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+</defs>
+
+<rect width="1600" height="160" rx="36" fill="#101010"/>
+<path d="M0 105C280 35 420 135 740 78S1180 25 1600 95" fill="none" stroke="url(#g2)" stroke-width="5"/>
+<text x="800" y="72" text-anchor="middle" fill="#FFFFFF" font-size="29" font-weight="800" font-family="Arial,Helvetica,sans-serif">UNDERSTAND • CHOOSE • BUILD • VERIFY</text>
+</svg>

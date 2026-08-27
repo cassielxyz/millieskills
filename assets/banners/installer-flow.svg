@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="300" viewBox="0 0 1600 300">
+
+<defs>
+  <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+  <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="48%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+</defs>
+
+<rect width="1600" height="300" rx="36" fill="#111111"/>
+<text x="800" y="55" text-anchor="middle" fill="#FFFFFF" font-size="28" font-weight="800" font-family="Arial,Helvetica,sans-serif">INSTALL ONCE. USE EVERYWHERE.</text>
+<g font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" text-anchor="middle">
+  <rect x="90" y="100" width="260" height="92" rx="22" fill="#181818" stroke="#FF3B30"/>
+  <text x="220" y="155" fill="#FFFFFF">PowerShell</text>
+  <path d="M355 146h140" stroke="url(#g2)" stroke-width="5"/>
+  <path d="m480 134 20 12-20 12" fill="none" stroke="#FF9500" stroke-width="5"/>
+  <rect x="520" y="100" width="260" height="92" rx="22" fill="#181818" stroke="#FF9500"/>
+  <text x="650" y="155" fill="#FFFFFF">Choose Skill</text>
+  <path d="M785 146h140" stroke="url(#g2)" stroke-width="5"/>
+  <path d="m910 134 20 12-20 12" fill="none" stroke="#FF9500" stroke-width="5"/>
+  <rect x="950" y="100" width="260" height="92" rx="22" fill="#181818" stroke="#FFD60A"/>
+  <text x="1080" y="155" fill="#FFFFFF">Choose Agent</text>
+  <path d="M1215 146h140" stroke="url(#g2)" stroke-width="5"/>
+  <path d="m1340 134 20 12-20 12" fill="none" stroke="#FFD60A" stroke-width="5"/>
+  <rect x="1380" y="100" width="160" height="92" rx="22" fill="url(#g2)"/>
+  <text x="1460" y="155" fill="#111111">Ready</text>
+</g>
+</svg>

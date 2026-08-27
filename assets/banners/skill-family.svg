@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="430" viewBox="0 0 1600 430">
+
+<defs>
+  <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+  <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="48%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+</defs>
+
+<rect width="1600" height="430" rx="36" fill="#FAFAFA"/>
+<text x="800" y="70" text-anchor="middle" fill="#151515" font-size="34" font-weight="800" font-family="Arial,Helvetica,sans-serif">THE MILLIE SPECIALIST FAMILY</text>
+<g font-family="Arial,Helvetica,sans-serif" text-anchor="middle">
+  <g transform="translate(100 125)">
+    <rect width="210" height="170" rx="28" fill="#111111"/>
+    <text x="105" y="82" fill="#FF9500" font-size="42" font-weight="800">UI</text>
+    <text x="105" y="125" fill="#FFFFFF" font-size="18" font-weight="700">UI / UX</text>
+  </g>
+  <g transform="translate(340 125)">
+    <rect width="210" height="170" rx="28" fill="#111111"/>
+    <text x="105" y="82" fill="#FF9500" font-size="42" font-weight="800">FX</text>
+    <text x="105" y="125" fill="#FFFFFF" font-size="18" font-weight="700">FIX</text>
+  </g>
+  <g transform="translate(580 125)">
+    <rect width="210" height="170" rx="28" fill="#111111"/>
+    <text x="105" y="82" fill="#FF9500" font-size="42" font-weight="800">SEC</text>
+    <text x="105" y="125" fill="#FFFFFF" font-size="18" font-weight="700">SECURITY</text>
+  </g>
+  <g transform="translate(820 125)">
+    <rect width="210" height="170" rx="28" fill="#111111"/>
+    <text x="105" y="82" fill="#FF9500" font-size="42" font-weight="800">QA</text>
+    <text x="105" y="125" fill="#FFFFFF" font-size="18" font-weight="700">TESTING</text>
+  </g>
+  <g transform="translate(1060 125)">
+    <rect width="210" height="170" rx="28" fill="#111111"/>
+    <text x="105" y="82" fill="#FF9500" font-size="42" font-weight="800">API</text>
+    <text x="105" y="125" fill="#FFFFFF" font-size="18" font-weight="700">BACKEND</text>
+  </g>
+  <g transform="translate(1300 125)">
+    <rect width="210" height="170" rx="28" fill="#111111"/>
+    <text x="105" y="82" fill="#FF9500" font-size="42" font-weight="800">+</text>
+    <text x="105" y="125" fill="#FFFFFF" font-size="18" font-weight="700">MORE</text>
+  </g>
+</g>
+<text x="800" y="370" text-anchor="middle" fill="#666666" font-size="21" font-family="Arial,Helvetica,sans-serif">Each skill stays focused • The family works together</text>
+</svg>

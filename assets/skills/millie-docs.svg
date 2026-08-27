@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="260" viewBox="0 0 260 260">
+
+<defs>
+  <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+  <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="48%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+</defs>
+
+<rect x="10" y="10" width="240" height="240" rx="54" fill="#111111"/>
+<rect x="28" y="28" width="204" height="204" rx="42" fill="none" stroke="url(#g2)" stroke-width="3"/>
+<text x="130" y="132" text-anchor="middle" fill="url(#g2)" font-size="42" font-weight="900" font-family="Arial,Helvetica,sans-serif">DOC</text>
+<text x="130" y="185" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="700" font-family="Arial,Helvetica,sans-serif">Documentation</text>
+</svg>

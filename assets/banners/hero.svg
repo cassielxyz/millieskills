@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520">
+
+<defs>
+  <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+  <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="48%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+</defs>
+
+<rect width="1600" height="520" rx="42" fill="#0D0D0D"/>
+<circle cx="1370" cy="74" r="250" fill="#FF3B30" opacity=".13"/>
+<circle cx="1450" cy="300" r="290" fill="#FF9500" opacity=".12"/>
+<circle cx="1170" cy="500" r="260" fill="#FFD60A" opacity=".10"/>
+<path d="M0 450C260 335 395 470 660 360S1070 225 1600 300" fill="none" stroke="url(#g2)" stroke-width="4" opacity=".8"/>
+<text x="110" y="185" fill="#FFFFFF" font-size="84" font-weight="800" font-family="Arial,Helvetica,sans-serif">MILLIE SKILLS</text>
+<text x="114" y="252" fill="#D6D6D6" font-size="32" font-weight="600" font-family="Arial,Helvetica,sans-serif">Universal specialist skills for AI coding agents.</text>
+<text x="114" y="318" fill="#8C8C8C" font-size="24" font-family="Arial,Helvetica,sans-serif">Install once • Use across projects • Route to the right specialist</text>
+<rect x="114" y="363" width="335" height="58" rx="18" fill="url(#g2)"/>
+<text x="281" y="401" text-anchor="middle" fill="#111111" font-size="23" font-weight="800" font-family="Arial,Helvetica,sans-serif">ONE-LINE INSTALLER</text>
+</svg>
