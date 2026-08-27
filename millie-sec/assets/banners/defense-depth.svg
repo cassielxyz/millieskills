@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="330" viewBox="0 0 1600 330">
+
+<defs>
+  <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+  <linearGradient id="gh" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+</defs>
+
+<rect width="1600" height="330" rx="38" fill="#F8F8F8"/>
+<text x="800" y="55" text-anchor="middle" fill="#151515" font-size="30" font-weight="850" font-family="Arial,Helvetica,sans-serif">INDEPENDENT SECURITY LENSES</text>
+<g font-family="Arial,Helvetica,sans-serif" text-anchor="middle" font-size="20" font-weight="750">
+<circle cx="270" cy="185" r="82" fill="#111111"/><text x="270" y="178" fill="#FF5A22">STATIC</text><text x="270" y="207" fill="#FFFFFF" font-size="15">SAST • SCA • Secrets</text>
+<circle cx="600" cy="185" r="82" fill="#111111"/><text x="600" y="178" fill="#FF9500">MANUAL</text><text x="600" y="207" fill="#FFFFFF" font-size="15">Flow • Auth • Logic</text>
+<circle cx="930" cy="185" r="82" fill="#111111"/><text x="930" y="178" fill="#FFB800">DYNAMIC</text><text x="930" y="207" fill="#FFFFFF" font-size="15">Authorized validation</text>
+<circle cx="1260" cy="185" r="82" fill="#111111"/><text x="1260" y="178" fill="#FFD60A">VERIFY</text><text x="1260" y="207" fill="#FFFFFF" font-size="15">Refute • Fix • Re-test</text>
+<path d="M352 185h166M682 185h166M1012 185h166" stroke="url(#gh)" stroke-width="5"/>
+</g>
+</svg>

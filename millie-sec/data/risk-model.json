@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "name": "Millie Priority Score",
+  "note": "Project prioritization helper; not a replacement for CVSS/EPSS/standards.",
+  "max": 100,
+  "factors": {
+    "technical_impact": 25,
+    "exploit_evidence": 20,
+    "exposure_reachability": 15,
+    "privilege_tenant_crossing": 15,
+    "sensitive_data_business": 10,
+    "known_exploitation_kev": 8,
+    "exploit_likelihood_epss": 4,
+    "confidence": 3
+  }
+}

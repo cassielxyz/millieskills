@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "refreshed": "2026-08-27",
+  "scale": "0-10 influence on Millie Security",
+  "resources": [
+    {
+      "id": "strix",
+      "name": "Strix + Strix Agent Skills",
+      "weight": 10.0,
+      "class": "core",
+      "use": [
+        "dynamic-validation",
+        "validated-findings",
+        "remediation",
+        "retest",
+        "ci"
+      ]
+    },
+    {
+      "id": "trailofbits",
+      "name": "Trail of Bits Agent Skills",
+      "weight": 10.0,
+      "class": "core",
+      "use": [
+        "audit-context",
+        "variant-analysis",
+        "static-analysis",
+        "testing",
+        "supply-chain"
+      ]
+    },
+    {
+      "id": "owasp",
+      "name": "OWASP ASVS/WSTG/Top10/API/MASVS/GenAI",
+      "weight": 10.0,
+      "class": "core",
+      "use": [
+        "controls",
+        "testing-coverage",
+        "web",
+        "api",
+        "mobile",
+        "ai"
+      ]
+    },
+    {
+      "id": "anthropic-security",
+      "name": "Anthropic Claude Security workflows",
+      "weight": 9.5,
+      "class": "core",
+      "use": [
+        "independent-verification",
+        "scratch-patching",
+        "refutation"
+      ]
+    },
+    {
+      "id": "semgrep",
+      "name": "Semgrep Skills",
+      "weight": 9.0,
+      "class": "core",
+      "use": [
+        "sast",
+        "taint",
+        "secure-coding",
+        "custom-rules"
+      ]
+    },
+    {
+      "id": "nist-ssdf",
+      "name": "NIST SSDF",
+      "weight": 8.5,
+      "class": "core",
+      "use": [
+        "secure-sdlc"
+      ]
+    },
+    {
+      "id": "antigravity-security",
+      "name": "Antigravity Awesome Skills security subsets",
+      "weight": 8.5,
+      "class": "filtered",
+      "use": [
+        "security-engineer",
+        "security-developer",
+        "auth",
+        "api",
+        "backend"
+      ]
+    },
+    {
+      "id": "backend-security",
+      "name": "Backend/Auth/API security skills",
+      "weight": 8.5,
+      "class": "filtered",
+      "use": [
+        "server-auth",
+        "api",
+        "secure-implementation"
+      ]
+    },
+    {
+      "id": "openssf",
+      "name": "OpenSSF/SLSA/SBOM ecosystem",
+      "weight": 8.0,
+      "class": "core",
+      "use": [
+        "supply-chain",
+        "provenance",
+        "sbom"
+      ]
+    },
+    {
+      "id": "superpowers",
+      "name": "Superpowers / Claude Superpower",
+      "weight": 8.0,
+      "class": "process",
+      "use": [
+        "tdd",
+        "evidence",
+        "systematic-review"
+      ]
+    },
+    {
+      "id": "gstack",
+      "name": "gstack",
+      "weight": 7.5,
+      "class": "process",
+      "use": [
+        "adversarial-review",
+        "second-opinion"
+      ]
+    },
+    {
+      "id": "ruflo",
+      "name": "Ruflo",
+      "weight": 6.5,
+      "class": "optional",
+      "use": [
+        "multi-agent-orchestration"
+      ]
+    },
+    {
+      "id": "brain-md",
+      "name": "BRAIN.md-style memory",
+      "weight": 5.0,
+      "class": "process",
+      "use": [
+        "durable-security-rationale"
+      ]
+    },
+    {
+      "id": "freebuf",
+      "name": "FreeBuf",
+      "weight": 4.0,
+      "class": "situational",
+      "use": [
+        "threat-intel-reference"
+      ]
+    },
+    {
+      "id": "shadcn",
+      "name": "shadcn/ui",
+      "weight": 1.5,
+      "class": "incidental",
+      "use": [
+        "frontend-context-only"
+      ]
+    },
+    {
+      "id": "uiux-pro",
+      "name": "UI/UX Pro",
+      "weight": 1.0,
+      "class": "excluded-core",
+      "use": []
+    },
+    {
+      "id": "impeccable",
+      "name": "Impeccable",
+      "weight": 1.0,
+      "class": "excluded-core",
+      "use": []
+    },
+    {
+      "id": "agentation",
+      "name": "Agentation",
+      "weight": 0.5,
+      "class": "excluded-core",
+      "use": []
+    },
+    {
+      "id": "gsap",
+      "name": "GSAP",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "refero",
+      "name": "Refero Design",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "threeui",
+      "name": "ThreeUI",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "img2three",
+      "name": "img2three.js",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "reanimated",
+      "name": "React Native Reanimated",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "stitch",
+      "name": "Google Stitch UI integration",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "taste",
+      "name": "Taste skill",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "awesome-design",
+      "name": "Awesome Claude Design",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "design-md",
+      "name": "Design.md Chrome/design tools",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "unlumen",
+      "name": "Unlumen UI",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "smoothui",
+      "name": "Smooth UI",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "animmaster",
+      "name": "AnimMaster",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "threlte",
+      "name": "Threlte",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "peachweb",
+      "name": "PeachWeb",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "theatre",
+      "name": "Theatre.js",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    },
+    {
+      "id": "spline",
+      "name": "Spline",
+      "weight": 0.0,
+      "class": "excluded",
+      "use": []
+    }
+  ]
+}

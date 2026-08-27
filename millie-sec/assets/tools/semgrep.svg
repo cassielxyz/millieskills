@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 400 100">
+
+<defs>
+  <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+  <linearGradient id="gh" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+</defs>
+
+<rect x="1" y="1" width="398" height="98" rx="22" fill="#111111" stroke="#303030"/>
+<rect x="16" y="16" width="68" height="68" rx="18" fill="url(#g)"/>
+<text x="50" y="60" text-anchor="middle" fill="#111111" font-size="25" font-weight="900" font-family="Arial,Helvetica,sans-serif">SG</text>
+<text x="105" y="45" fill="#FFFFFF" font-size="21" font-weight="800" font-family="Arial,Helvetica,sans-serif">Semgrep</text>
+<text x="105" y="69" fill="#969696" font-size="14" font-family="Arial,Helvetica,sans-serif">SAST / taint</text>
+</svg>

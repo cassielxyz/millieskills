@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "domains": [
+    {
+      "id": "authn",
+      "name": "Authentication",
+      "references": [
+        "OWASP ASVS",
+        "OWASP API Top 10"
+      ]
+    },
+    {
+      "id": "authz",
+      "name": "Authorization / Tenancy",
+      "references": [
+        "OWASP ASVS",
+        "OWASP API Top 10"
+      ]
+    },
+    {
+      "id": "input",
+      "name": "Injection / Parsing",
+      "references": [
+        "OWASP Top 10",
+        "CWE"
+      ]
+    },
+    {
+      "id": "secrets",
+      "name": "Secrets / Cryptography",
+      "references": [
+        "OWASP ASVS"
+      ]
+    },
+    {
+      "id": "supply-chain",
+      "name": "Dependencies / Supply Chain",
+      "references": [
+        "OWASP Top 10 2025",
+        "NIST SSDF",
+        "OpenSSF",
+        "SLSA"
+      ]
+    },
+    {
+      "id": "web",
+      "name": "Web",
+      "references": [
+        "OWASP ASVS",
+        "WSTG",
+        "Top 10 2025"
+      ]
+    },
+    {
+      "id": "api",
+      "name": "API",
+      "references": [
+        "OWASP API Security Top 10 2023"
+      ]
+    },
+    {
+      "id": "logic",
+      "name": "Business Logic / Abuse",
+      "references": [
+        "OWASP ASVS",
+        "API Security"
+      ]
+    },
+    {
+      "id": "network",
+      "name": "SSRF / Egress",
+      "references": [
+        "OWASP Top 10",
+        "API Security"
+      ]
+    },
+    {
+      "id": "files",
+      "name": "Files / Parsers",
+      "references": [
+        "ASVS",
+        "CWE"
+      ]
+    },
+    {
+      "id": "database",
+      "name": "Database / Storage",
+      "references": [
+        "ASVS"
+      ]
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud / IaC / Containers",
+      "references": [
+        "NIST SSDF",
+        "OpenSSF"
+      ]
+    },
+    {
+      "id": "mobile",
+      "name": "Mobile",
+      "references": [
+        "OWASP MASVS",
+        "MASTG",
+        "MASWE"
+      ]
+    },
+    {
+      "id": "ai",
+      "name": "AI / Agentic",
+      "references": [
+        "OWASP GenAI",
+        "OWASP Agentic"
+      ]
+    },
+    {
+      "id": "privacy",
+      "name": "Privacy / Logging / Errors",
+      "references": [
+        "ASVS",
+        "Top 10 2025"
+      ]
+    },
+    {
+      "id": "ci",
+      "name": "CI/CD / Release",
+      "references": [
+        "NIST SSDF",
+        "OpenSSF",
+        "SLSA"
+      ]
+    }
+  ]
+}

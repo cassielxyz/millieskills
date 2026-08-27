@@ -1,0 +1,7 @@
+{
+  "id": "millie-sec",
+  "name": "Millie Security",
+  "short": "Autonomous secure-by-design, AppSec audit, authorized pentest, remediation and verification pipeline.",
+  "path": "millie-sec",
+  "status": "available"
+}

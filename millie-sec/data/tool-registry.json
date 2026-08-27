@@ -1,0 +1,591 @@
+{
+  "schema_version": 1,
+  "selection_policy": "Select the smallest high-value set providing independent applicable coverage. Prefer existing tools; no automatic mass installation.",
+  "tools": [
+    {
+      "id": "semgrep",
+      "name": "Semgrep",
+      "category": "sast",
+      "priority": 10,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "multi-language"
+      ],
+      "typical_output": "candidate findings/SARIF",
+      "external_authorization": "No"
+    },
+    {
+      "id": "codeql",
+      "name": "CodeQL",
+      "category": "sast-dataflow",
+      "priority": 9,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "supported-codeql-language"
+      ],
+      "typical_output": "SARIF",
+      "external_authorization": "No"
+    },
+    {
+      "id": "osv-scanner",
+      "name": "OSV-Scanner",
+      "category": "sca",
+      "priority": 9,
+      "targets": [
+        "manifest",
+        "lockfile"
+      ],
+      "conditions": [
+        "dependencies"
+      ],
+      "typical_output": "JSON",
+      "external_authorization": "No"
+    },
+    {
+      "id": "trivy",
+      "name": "Trivy",
+      "category": "sca-secrets-iac-container",
+      "priority": 9,
+      "targets": [
+        "source",
+        "image",
+        "iac"
+      ],
+      "conditions": [
+        "dependencies",
+        "containers",
+        "iac"
+      ],
+      "typical_output": "JSON/SARIF/SBOM",
+      "external_authorization": "No"
+    },
+    {
+      "id": "gitleaks",
+      "name": "Gitleaks",
+      "category": "secrets",
+      "priority": 9,
+      "targets": [
+        "source",
+        "git"
+      ],
+      "conditions": [
+        "git-or-filesystem"
+      ],
+      "typical_output": "JSON/SARIF",
+      "external_authorization": "No"
+    },
+    {
+      "id": "syft",
+      "name": "Syft",
+      "category": "sbom",
+      "priority": 8,
+      "targets": [
+        "source",
+        "image"
+      ],
+      "conditions": [
+        "release-or-container"
+      ],
+      "typical_output": "CycloneDX/SPDX",
+      "external_authorization": "No"
+    },
+    {
+      "id": "grype",
+      "name": "Grype",
+      "category": "container-sca",
+      "priority": 8,
+      "targets": [
+        "image",
+        "sbom"
+      ],
+      "conditions": [
+        "containers"
+      ],
+      "typical_output": "JSON/SARIF",
+      "external_authorization": "No"
+    },
+    {
+      "id": "scorecard",
+      "name": "OpenSSF Scorecard",
+      "category": "supply-chain-posture",
+      "priority": 7,
+      "targets": [
+        "repository"
+      ],
+      "conditions": [
+        "public-or-accessible-repo"
+      ],
+      "typical_output": "JSON",
+      "external_authorization": "Maybe"
+    },
+    {
+      "id": "strix",
+      "name": "Strix",
+      "category": "dynamic-pentest",
+      "priority": 10,
+      "targets": [
+        "source",
+        "local-app",
+        "authorized-url",
+        "api"
+      ],
+      "conditions": [
+        "runtime-or-source"
+      ],
+      "typical_output": "Markdown/JSON/SARIF",
+      "external_authorization": "Yes for external"
+    },
+    {
+      "id": "zap",
+      "name": "OWASP ZAP",
+      "category": "dast",
+      "priority": 8,
+      "targets": [
+        "local-app",
+        "authorized-url"
+      ],
+      "conditions": [
+        "web-runtime"
+      ],
+      "typical_output": "JSON/HTML",
+      "external_authorization": "Yes for external"
+    },
+    {
+      "id": "dependency-native",
+      "name": "Ecosystem dependency audit",
+      "category": "sca",
+      "priority": 8,
+      "targets": [
+        "manifest",
+        "lockfile"
+      ],
+      "conditions": [
+        "package-manager"
+      ],
+      "typical_output": "native",
+      "external_authorization": "No"
+    },
+    {
+      "id": "bandit",
+      "name": "Bandit",
+      "category": "python-sast",
+      "priority": 6,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "python"
+      ],
+      "typical_output": "JSON/SARIF",
+      "external_authorization": "No"
+    },
+    {
+      "id": "ruff",
+      "name": "Ruff",
+      "category": "python-quality",
+      "priority": 4,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "python"
+      ],
+      "typical_output": "text/JSON",
+      "external_authorization": "No"
+    },
+    {
+      "id": "mypy-pyright",
+      "name": "mypy/Pyright",
+      "category": "python-types",
+      "priority": 4,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "python"
+      ],
+      "typical_output": "text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "npm-audit",
+      "name": "npm audit",
+      "category": "js-sca",
+      "priority": 7,
+      "targets": [
+        "manifest",
+        "lockfile"
+      ],
+      "conditions": [
+        "npm"
+      ],
+      "typical_output": "JSON",
+      "external_authorization": "No"
+    },
+    {
+      "id": "pnpm-audit",
+      "name": "pnpm audit",
+      "category": "js-sca",
+      "priority": 7,
+      "targets": [
+        "manifest",
+        "lockfile"
+      ],
+      "conditions": [
+        "pnpm"
+      ],
+      "typical_output": "JSON",
+      "external_authorization": "No"
+    },
+    {
+      "id": "yarn-audit",
+      "name": "yarn audit",
+      "category": "js-sca",
+      "priority": 6,
+      "targets": [
+        "manifest",
+        "lockfile"
+      ],
+      "conditions": [
+        "yarn"
+      ],
+      "typical_output": "JSON",
+      "external_authorization": "No"
+    },
+    {
+      "id": "cargo-audit",
+      "name": "cargo-audit",
+      "category": "rust-sca",
+      "priority": 8,
+      "targets": [
+        "manifest",
+        "lockfile"
+      ],
+      "conditions": [
+        "rust"
+      ],
+      "typical_output": "JSON",
+      "external_authorization": "No"
+    },
+    {
+      "id": "cargo-clippy",
+      "name": "cargo clippy",
+      "category": "rust-static",
+      "priority": 6,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "rust"
+      ],
+      "typical_output": "text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "govulncheck",
+      "name": "govulncheck",
+      "category": "go-sca-reachability",
+      "priority": 9,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "go"
+      ],
+      "typical_output": "JSON/text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "staticcheck",
+      "name": "Staticcheck",
+      "category": "go-static",
+      "priority": 6,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "go"
+      ],
+      "typical_output": "text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "govet",
+      "name": "go vet",
+      "category": "go-static",
+      "priority": 5,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "go"
+      ],
+      "typical_output": "text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "spotbugs",
+      "name": "SpotBugs",
+      "category": "java-static",
+      "priority": 6,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "java"
+      ],
+      "typical_output": "XML",
+      "external_authorization": "No"
+    },
+    {
+      "id": "dependency-check",
+      "name": "OWASP Dependency-Check",
+      "category": "sca",
+      "priority": 6,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "java-or-general"
+      ],
+      "typical_output": "JSON/SARIF",
+      "external_authorization": "No"
+    },
+    {
+      "id": "brakeman",
+      "name": "Brakeman",
+      "category": "rails-sast",
+      "priority": 8,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "rails"
+      ],
+      "typical_output": "JSON",
+      "external_authorization": "No"
+    },
+    {
+      "id": "bundler-audit",
+      "name": "Bundler Audit",
+      "category": "ruby-sca",
+      "priority": 7,
+      "targets": [
+        "manifest",
+        "lockfile"
+      ],
+      "conditions": [
+        "ruby"
+      ],
+      "typical_output": "text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "phpstan-psalm",
+      "name": "PHPStan/Psalm",
+      "category": "php-static",
+      "priority": 5,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "php"
+      ],
+      "typical_output": "text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "composer-audit",
+      "name": "Composer audit",
+      "category": "php-sca",
+      "priority": 7,
+      "targets": [
+        "manifest",
+        "lockfile"
+      ],
+      "conditions": [
+        "composer"
+      ],
+      "typical_output": "JSON",
+      "external_authorization": "No"
+    },
+    {
+      "id": "dotnet-audit",
+      "name": "dotnet package vulnerability",
+      "category": "dotnet-sca",
+      "priority": 7,
+      "targets": [
+        "manifest",
+        "lockfile"
+      ],
+      "conditions": [
+        "dotnet"
+      ],
+      "typical_output": "text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "roslyn",
+      "name": "Roslyn analyzers",
+      "category": "dotnet-static",
+      "priority": 6,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "dotnet"
+      ],
+      "typical_output": "SARIF/text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "swiftlint",
+      "name": "SwiftLint",
+      "category": "swift-static",
+      "priority": 4,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "swift"
+      ],
+      "typical_output": "text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "mobSF",
+      "name": "MobSF",
+      "category": "mobile-static-dynamic",
+      "priority": 8,
+      "targets": [
+        "mobile-build",
+        "source"
+      ],
+      "conditions": [
+        "mobile"
+      ],
+      "typical_output": "report",
+      "external_authorization": "No/local"
+    },
+    {
+      "id": "frida",
+      "name": "Frida",
+      "category": "mobile-runtime",
+      "priority": 7,
+      "targets": [
+        "mobile-runtime"
+      ],
+      "conditions": [
+        "mobile"
+      ],
+      "typical_output": "interactive evidence",
+      "external_authorization": "No/local"
+    },
+    {
+      "id": "checkov",
+      "name": "Checkov",
+      "category": "iac",
+      "priority": 7,
+      "targets": [
+        "iac"
+      ],
+      "conditions": [
+        "terraform",
+        "cloudformation",
+        "k8s"
+      ],
+      "typical_output": "JSON/SARIF",
+      "external_authorization": "No"
+    },
+    {
+      "id": "kubescape",
+      "name": "Kubescape",
+      "category": "k8s-posture",
+      "priority": 7,
+      "targets": [
+        "k8s"
+      ],
+      "conditions": [
+        "kubernetes"
+      ],
+      "typical_output": "JSON",
+      "external_authorization": "Maybe for live cluster"
+    },
+    {
+      "id": "hadolint",
+      "name": "Hadolint",
+      "category": "dockerfile",
+      "priority": 5,
+      "targets": [
+        "dockerfile"
+      ],
+      "conditions": [
+        "containers"
+      ],
+      "typical_output": "SARIF/text",
+      "external_authorization": "No"
+    },
+    {
+      "id": "cosign",
+      "name": "Cosign",
+      "category": "artifact-signing",
+      "priority": 7,
+      "targets": [
+        "artifact",
+        "image"
+      ],
+      "conditions": [
+        "release"
+      ],
+      "typical_output": "signature/attestation",
+      "external_authorization": "No"
+    },
+    {
+      "id": "cyclonedx",
+      "name": "CycloneDX tooling",
+      "category": "sbom",
+      "priority": 7,
+      "targets": [
+        "source",
+        "artifact"
+      ],
+      "conditions": [
+        "release"
+      ],
+      "typical_output": "CycloneDX",
+      "external_authorization": "No"
+    },
+    {
+      "id": "native-fuzzer",
+      "name": "Language-native fuzzer",
+      "category": "fuzzing",
+      "priority": 7,
+      "targets": [
+        "source"
+      ],
+      "conditions": [
+        "parser-or-library"
+      ],
+      "typical_output": "crash corpus",
+      "external_authorization": "No/local"
+    },
+    {
+      "id": "sanitizers",
+      "name": "ASan/UBSan/MSan/TSan",
+      "category": "native-runtime",
+      "priority": 8,
+      "targets": [
+        "native-build"
+      ],
+      "conditions": [
+        "c-cpp-rust-ffi"
+      ],
+      "typical_output": "runtime diagnostics",
+      "external_authorization": "No/local"
+    }
+  ]
+}

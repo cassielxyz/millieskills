@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="530" viewBox="0 0 1600 530">
+
+<defs>
+  <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+  <linearGradient id="gh" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#FF3B30"/>
+    <stop offset="50%" stop-color="#FF9500"/>
+    <stop offset="100%" stop-color="#FFD60A"/>
+  </linearGradient>
+</defs>
+
+<rect width="1600" height="530" rx="42" fill="#0B0B0B"/>
+<circle cx="1380" cy="80" r="280" fill="#FF3B30" opacity=".12"/>
+<circle cx="1430" cy="320" r="330" fill="#FF9500" opacity=".10"/>
+<circle cx="1120" cy="520" r="260" fill="#FFD60A" opacity=".08"/>
+<path d="M1260 120 1110 180v108c0 108 63 163 150 205 87-42 150-97 150-205V180z" fill="none" stroke="url(#gh)" stroke-width="8" opacity=".9"/>
+<path d="m1198 292 43 43 83-95" fill="none" stroke="url(#gh)" stroke-width="12" stroke-linecap="round"/>
+<text x="100" y="175" fill="#FFFFFF" font-size="76" font-weight="850" font-family="Arial,Helvetica,sans-serif">MILLIE SECURITY</text>
+<text x="105" y="238" fill="#D0D0D0" font-size="29" font-weight="600" font-family="Arial,Helvetica,sans-serif">Autonomous secure-by-design • audit • remediation • verification</text>
+<text x="105" y="300" fill="#858585" font-size="22" font-family="Arial,Helvetica,sans-serif">Clone first. Map the system. Prove the weakness. Fix the class. Re-test the proof.</text>
+<rect x="105" y="350" width="500" height="62" rx="19" fill="url(#gh)"/>
+<text x="355" y="390" text-anchor="middle" fill="#101010" font-size="22" font-weight="850" font-family="Arial,Helvetica,sans-serif">ONE PROMPT → FULL SECURITY PIPELINE</text>
+</svg>
